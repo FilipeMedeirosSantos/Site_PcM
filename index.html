@@ -43,15 +43,34 @@
 
         /* Estilização dos elementos do formulário */
         h1 { text-align: center; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px; margin-top: 0; }
-        label { display: block; margin-top: 15px; font-weight: 600; color: #fff; }
-        input[type="text"], textarea, select { width: 100%; padding: 10px; margin-top: 6px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.3); background-color: rgba(255,255,255,0.1); color: #fff; font-size: 16px; }
-        input[type="text"]::placeholder, textarea::placeholder { color: #ccc; }
-        input[type="radio"], input[type="checkbox"] { margin-right: 8px; transform: scale(1.1); }
+        label { display: block; margin-top: 20px; margin-bottom: 8px; font-weight: 600; color: #fff; }
+        textarea { width: 100%; padding: 10px; margin-top: 6px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.3); background-color: rgba(255,255,255,0.1); color: #fff; font-size: 16px; }
+        textarea::placeholder { color: #ccc; }
+        input[type="radio"] { margin-right: 5px; transform: scale(1.1); }
+        .inline-label { display: inline-block !important; margin: 0 10px 0 0; font-weight: normal;}
         fieldset { border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; margin-top: 25px; padding: 20px; }
         legend { font-size: 1.2em; font-weight: bold; color: #fff; padding: 0 10px; }
         button { display: block; width: 100%; padding: 14px; background-color: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 30px; transition: background-color 0.3s, transform 0.2s; }
         button:hover { background-color: rgba(255, 255, 255, 0.4); transform: translateY(-2px); }
         button:disabled { background-color: #777; cursor: not-allowed; transform: none; }
+
+        /* Estilo para a escala de notas */
+        .rating-scale {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 5px;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+        .rating-scale label {
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
 
     </style>
 </head>
@@ -60,36 +79,105 @@
     <div class="form-container">
         <h1>Análise Crítica do Jogo "Pai contra Mãe"</h1>
         <form id="quizForm" name="quizForm">
+            
             <fieldset>
-                <legend>Narrativa e Adaptação</legend>
-                <label>A adaptação da obra de Machado de Assis para Graphic Novel interativa foi bem-sucedida?</label>
-                <input type="radio" id="sim-adapt" name="adaptacao_sucesso" value="Sim"> <label for="sim-adapt" style="display: inline-block;">Sim</label><br>
-                <input type="radio" id="parcial-adapt" name="adaptacao_sucesso" value="Parcialmente"> <label for="parcial-adapt" style="display: inline-block;">Parcialmente</label><br>
-                <input type="radio" id="nao-adapt" name="adaptacao_sucesso" value="Não"> <label for="nao-adapt" style="display: inline-block;">Não</label>
-                <label for="narrativa-machadiana">A narrativa interativa conseguiu capturar a complexidade e a crítica social presentes na escrita machadiana? Justifique.</label>
-                <textarea id="narrativa-machadiana" name="narrativa_machadiana" rows="4" placeholder="Comente sobre como o jogo reflete o estilo do autor..." required></textarea>
+                <legend>Parte 1: Avaliação Quantitativa</legend>
+                
+                <label for="q1-tematica">1. Representação da Temática: Quão bem o jogo representa os temas de escravidão, racismo e desigualdade social? (1 = Muito Ruim, 10 = Excelente)</label>
+                <div class="rating-scale" id="q1-tematica">
+                    <label class="inline-label">1 <input type="radio" name="nota_tematica" value="1" required></label>
+                    <label class="inline-label">2 <input type="radio" name="nota_tematica" value="2"></label>
+                    <label class="inline-label">3 <input type="radio" name="nota_tematica" value="3"></label>
+                    <label class="inline-label">4 <input type="radio" name="nota_tematica" value="4"></label>
+                    <label class="inline-label">5 <input type="radio" name="nota_tematica" value="5"></label>
+                    <label class="inline-label">6 <input type="radio" name="nota_tematica" value="6"></label>
+                    <label class="inline-label">7 <input type="radio" name="nota_tematica" value="7"></label>
+                    <label class="inline-label">8 <input type="radio" name="nota_tematica" value="8"></label>
+                    <label class="inline-label">9 <input type="radio" name="nota_tematica" value="9"></label>
+                    <label class="inline-label">10 <input type="radio" name="nota_tematica" value="10"></label>
+                </div>
+                
+                <label for="q2-engajamento">2. Engajamento Narrativo: O quão envolvente foi a narrativa interativa e as suas escolhas na história?</label>
+                 <div class="rating-scale" id="q2-engajamento">
+                    <label class="inline-label">1 <input type="radio" name="nota_engajamento" value="1" required></label>
+                    <label class="inline-label">2 <input type="radio" name="nota_engajamento" value="2"></label>
+                    <label class="inline-label">3 <input type="radio" name="nota_engajamento" value="3"></label>
+                    <label class="inline-label">4 <input type="radio" name="nota_engajamento" value="4"></label>
+                    <label class="inline-label">5 <input type="radio" name="nota_engajamento" value="5"></label>
+                    <label class="inline-label">6 <input type="radio" name="nota_engajamento" value="6"></label>
+                    <label class="inline-label">7 <input type="radio" name="nota_engajamento" value="7"></label>
+                    <label class="inline-label">8 <input type="radio" name="nota_engajamento" value="8"></label>
+                    <label class="inline-label">9 <input type="radio" name="nota_engajamento" value="9"></label>
+                    <label class="inline-label">10 <input type="radio" name="nota_engajamento" value="10"></label>
+                </div>
+                
+                <label for="q3-debate">3. Potencial para Debate: O quanto o jogo estimulou a sua reflexão crítica?</label>
+                 <div class="rating-scale" id="q3-debate">
+                    <label class="inline-label">1 <input type="radio" name="nota_debate" value="1" required></label>
+                    <label class="inline-label">2 <input type="radio" name="nota_debate" value="2"></label>
+                    <label class="inline-label">3 <input type="radio" name="nota_debate" value="3"></label>
+                    <label class="inline-label">4 <input type="radio" name="nota_debate" value="4"></label>
+                    <label class="inline-label">5 <input type="radio" name="nota_debate" value="5"></label>
+                    <label class="inline-label">6 <input type="radio" name="nota_debate" value="6"></label>
+                    <label class="inline-label">7 <input type="radio" name="nota_debate" value="7"></label>
+                    <label class="inline-label">8 <input type="radio" name="nota_debate" value="8"></label>
+                    <label class="inline-label">9 <input type="radio" name="nota_debate" value="9"></label>
+                    <label class="inline-label">10 <input type="radio" name="nota_debate" value="10"></label>
+                </div>
+
+                <label for="q4-linguagem">4. Linguagem e Acessibilidade: Quão clara e acessível foi a linguagem usada no roteiro?</label>
+                 <div class="rating-scale" id="q4-linguagem">
+                    <label class="inline-label">1 <input type="radio" name="nota_linguagem" value="1" required></label>
+                    <label class="inline-label">2 <input type="radio" name="nota_linguagem" value="2"></label>
+                    <label class="inline-label">3 <input type="radio" name="nota_linguagem" value="3"></label>
+                    <label class="inline-label">4 <input type="radio" name="nota_linguagem" value="4"></label>
+                    <label class="inline-label">5 <input type="radio" name="nota_linguagem" value="5"></label>
+                    <label class="inline-label">6 <input type="radio" name="nota_linguagem" value="6"></label>
+                    <label class="inline-label">7 <input type="radio" name="nota_linguagem" value="7"></label>
+                    <label class="inline-label">8 <input type="radio" name="nota_linguagem" value="8"></label>
+                    <label class="inline-label">9 <input type="radio" name="nota_linguagem" value="9"></label>
+                    <label class="inline-label">10 <input type="radio" name="nota_linguagem" value="10"></label>
+                </div>
+
+                <label for="q5-experiencia">5. Experiência Geral: Como classificaria a sua experiência geral ao jogar?</label>
+                 <div class="rating-scale" id="q5-experiencia">
+                    <label class="inline-label">1 <input type="radio" name="nota_experiencia" value="1" required></label>
+                    <label class="inline-label">2 <input type="radio" name="nota_experiencia" value="2"></label>
+                    <label class="inline-label">3 <input type="radio" name="nota_experiencia" value="3"></label>
+                    <label class="inline-label">4 <input type="radio" name="nota_experiencia" value="4"></label>
+                    <label class="inline-label">5 <input type="radio" name="nota_experiencia" value="5"></label>
+                    <label class="inline-label">6 <input type="radio" name="nota_experiencia" value="6"></label>
+                    <label class="inline-label">7 <input type="radio" name="nota_experiencia" value="7"></label>
+                    <label class="inline-label">8 <input type="radio" name="nota_experiencia" value="8"></label>
+                    <label class="inline-label">9 <input type="radio" name="nota_experiencia" value="9"></label>
+                    <label class="inline-label">10 <input type="radio" name="nota_experiencia" value="10"></label>
+                </div>
             </fieldset>
+
             <fieldset>
-                <legend>Potencial de Reflexão Crítica</legend>
-                <label>O jogo é eficaz em promover uma reflexão sobre a escravidão e o racismo no Brasil?</label>
-                <select id="eficacia-reflexao" name="eficacia_reflexao">
-                    <option value="Muito eficaz">Muito eficaz</option>
-                    <option value="Eficaz">Eficaz</option>
-                    <option value="Pouco eficaz">Pouco eficaz</option>
-                    <option value="Nada eficaz">Nada eficaz</option>
-                </select>
-                <label>Quais elementos do jogo você considerou mais impactantes?</label>
-                <textarea id="elementos-impacto" name="elementos_impacto" rows="4" placeholder="Cenas visuais, diálogos, escolhas..."></textarea>
+                <legend>Parte 2: Opiniões Críticas</legend>
+
+                <label for="q6-ponto-forte">6. Qual foi o ponto mais forte do jogo para você? Descreva uma cena, diálogo ou escolha que tenha sido particularmente impactante e explique o porquê.</label>
+                <textarea id="q6-ponto-forte" name="ponto_forte" rows="4" placeholder="Sua resposta aqui..." required></textarea>
+
+                <label for="q7-ponto-fraco">7. Qual foi o ponto mais fraco ou que mais precisa de melhoria? O que você sugere para aprimorá-lo?</label>
+                <textarea id="q7-ponto-fraco" name="ponto_fraco" rows="4" placeholder="Sua resposta aqui..." required></textarea>
+
+                <label for="q8-ferramenta-edu">8. Em sua opinião, o jogo consegue ser uma ferramenta educacional eficaz para discutir a literatura afro-brasileira e a história do Brasil? Por quê?</label>
+                <textarea id="q8-ferramenta-edu" name="ferramenta_educacional" rows="4" placeholder="Sua resposta aqui..." required></textarea>
+                
+                <label for="q9-adaptacao">9. A adaptação da obra de Machado de Assis para Graphic Novel interativa lhe pareceu bem-sucedida? A essência da obra foi preservada?</label>
+                <textarea id="q9-adaptacao" name="sucesso_adaptacao" rows="4" placeholder="Sua resposta aqui..." required></textarea>
+
+                <label>10. Você leu o conto original "Pai contra Mãe", de Machado de Assis?</label>
+                <div>
+                    <input type="radio" id="leu-sim" name="leu_conto" value="Sim" required>
+                    <label for="leu-sim" class="inline-label">Sim</label>
+                    <input type="radio" id="leu-nao" name="leu_conto" value="Não">
+                    <label for="leu-nao" class="inline-label">Não</label>
+                </div>
             </fieldset>
-            <fieldset>
-                <legend>Aplicabilidade Pedagógica</legend>
-                <label>Em quais disciplinas este jogo poderia ser aplicado?</label>
-                <input type="checkbox" id="disc-lit" name="disciplina" value="Literatura"> <label for="disc-lit" style="display: inline-block;">Literatura</label><br>
-                <input type="checkbox" id="disc-hist" name="disciplina" value="Historia"> <label for="disc-hist" style="display: inline-block;">História</label><br>
-                <input type="checkbox" id="disc-soc" name="disciplina" value="Sociologia"> <label for="disc-soc" style="display: inline-block;">Sociologia</label><br>
-                <input type="checkbox" id="disc-art" name="disciplina" value="Artes"> <label for="disc-art" style="display: inline-block;">Artes</label><br>
-                <input type="checkbox" id="disc-etica" name="disciplina" value="Etica"> <label for="disc-etica" style="display: inline-block;">Ética/Filosofia</label>
-            </fieldset>
+
             <button type="submit" id="submit-button">Enviar Análise</button>
         </form>
     </div>
@@ -102,6 +190,7 @@
         form.addEventListener('submit', function(e) {
             e.preventDefault(); 
             
+            // URL do seu script do Google para receber os dados do formulário
             const scriptURL = 'https://script.google.com/macros/s/AKfycbw_6Zcbe1eUeLOSnitiI9KsCkKHm8j-mYVw7DKoPOL_K1CbVnqHIYpLj68k4WO4VW6YRg/exec';
 
             submitButton.disabled = true;
@@ -129,4 +218,3 @@
 
 </body>
 </html>
-
