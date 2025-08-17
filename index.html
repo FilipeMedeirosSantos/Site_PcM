@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise Crítica | Jogo "Pai contra Mãe"</title>
+    <style>
+        /* Estilos Gerais */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('floresta_luarn.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            
+            /* Usando Flexbox para centralizar o conteúdo vertical e horizontalmente */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container do Formulário com Efeito Vidro */
+        .form-container {
+            width: 100%;
+            max-width: 700px;
+            padding: 35px;
+            
+            /* Efeito Vidro (Glassmorphism) */
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px); /* Suporte para Safari */
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estilização dos elementos do formulário */
+        h1 { text-align: center; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px; margin-top: 0; }
+        label { display: block; margin-top: 15px; font-weight: 600; color: #fff; }
+        input[type="text"], textarea, select { width: 100%; padding: 10px; margin-top: 6px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.3); background-color: rgba(255,255,255,0.1); color: #fff; font-size: 16px; }
+        input[type="text"]::placeholder, textarea::placeholder { color: #ccc; }
+        input[type="radio"], input[type="checkbox"] { margin-right: 8px; transform: scale(1.1); }
+        fieldset { border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; margin-top: 25px; padding: 20px; }
+        legend { font-size: 1.2em; font-weight: bold; color: #fff; padding: 0 10px; }
+        button { display: block; width: 100%; padding: 14px; background-color: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 30px; transition: background-color 0.3s, transform 0.2s; }
+        button:hover { background-color: rgba(255, 255, 255, 0.4); transform: translateY(-2px); }
+        button:disabled { background-color: #777; cursor: not-allowed; transform: none; }
+
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Análise Crítica do Jogo "Pai contra Mãe"</h1>
+        <form id="quizForm" name="quizForm">
+            <fieldset>
+                <legend>Narrativa e Adaptação</legend>
+                <label>A adaptação da obra de Machado de Assis para Graphic Novel interativa foi bem-sucedida?</label>
+                <input type="radio" id="sim-adapt" name="adaptacao_sucesso" value="Sim"> <label for="sim-adapt" style="display: inline-block;">Sim</label><br>
+                <input type="radio" id="parcial-adapt" name="adaptacao_sucesso" value="Parcialmente"> <label for="parcial-adapt" style="display: inline-block;">Parcialmente</label><br>
+                <input type="radio" id="nao-adapt" name="adaptacao_sucesso" value="Não"> <label for="nao-adapt" style="display: inline-block;">Não</label>
+                <label for="narrativa-machadiana">A narrativa interativa conseguiu capturar a complexidade e a crítica social presentes na escrita machadiana? Justifique.</label>
+                <textarea id="narrativa-machadiana" name="narrativa_machadiana" rows="4" placeholder="Comente sobre como o jogo reflete o estilo do autor..." required></textarea>
+            </fieldset>
+            <fieldset>
+                <legend>Potencial de Reflexão Crítica</legend>
+                <label>O jogo é eficaz em promover uma reflexão sobre a escravidão e o racismo no Brasil?</label>
+                <select id="eficacia-reflexao" name="eficacia_reflexao">
+                    <option value="Muito eficaz">Muito eficaz</option>
+                    <option value="Eficaz">Eficaz</option>
+                    <option value="Pouco eficaz">Pouco eficaz</option>
+                    <option value="Nada eficaz">Nada eficaz</option>
+                </select>
+                <label>Quais elementos do jogo você considerou mais impactantes?</label>
+                <textarea id="elementos-impacto" name="elementos_impacto" rows="4" placeholder="Cenas visuais, diálogos, escolhas..."></textarea>
+            </fieldset>
+            <fieldset>
+                <legend>Aplicabilidade Pedagógica</legend>
+                <label>Em quais disciplinas este jogo poderia ser aplicado?</label>
+                <input type="checkbox" id="disc-lit" name="disciplina" value="Literatura"> <label for="disc-lit" style="display: inline-block;">Literatura</label><br>
+                <input type="checkbox" id="disc-hist" name="disciplina" value="Historia"> <label for="disc-hist" style="display: inline-block;">História</label><br>
+                <input type="checkbox" id="disc-soc" name="disciplina" value="Sociologia"> <label for="disc-soc" style="display: inline-block;">Sociologia</label><br>
+                <input type="checkbox" id="disc-art" name="disciplina" value="Artes"> <label for="disc-art" style="display: inline-block;">Artes</label><br>
+                <input type="checkbox" id="disc-etica" name="disciplina" value="Etica"> <label for="disc-etica" style="display: inline-block;">Ética/Filosofia</label>
+            </fieldset>
+            <button type="submit" id="submit-button">Enviar Análise</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('quizForm');
+        const submitButton = document.getElementById('submit-button');
+        const formContainer = document.querySelector('.form-container');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbw_6Zcbe1eUeLOSnitiI9KsCkKHm8j-mYVw7DKoPOL_K1CbVnqHIYpLj68k4WO4VW6YRg/exec';
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'Enviando...';
+            
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    console.log('Success!', response);
+                    
+                    formContainer.innerHTML = `
+                        <div style="text-align: center; padding: 50px 0; color: #fff;">
+                            <h1 style="border-bottom: none;">Obrigado!</h1>
+                            <p style="font-size: 1.2em;">Sua análise foi enviada com sucesso.</p>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('Ocorreu um erro ao enviar suas respostas. Por favor, tente novamente.');
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Enviar Análise';
+                });
+        });
+    </script>
+
+</body>
+</html>
+
