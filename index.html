@@ -44,7 +44,7 @@
         /* Estilização dos elementos do formulário */
         h1 { text-align: center; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px; margin-top: 0; }
         label { display: block; margin-top: 20px; margin-bottom: 8px; font-weight: 600; color: #fff; }
-        textarea { width: 100%; padding: 10px; margin-top: 6px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.3); background-color: rgba(255,255,255,0.1); color: #fff; font-size: 16px; }
+        input[type="number"], textarea, select { width: 100%; padding: 10px; margin-top: 6px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.3); background-color: rgba(255,255,255,0.1); color: #fff; font-size: 16px; }
         textarea::placeholder { color: #ccc; }
         input[type="radio"] { margin-right: 5px; transform: scale(1.1); }
         .inline-label { display: inline-block !important; margin: 0 10px 0 0; font-weight: normal;}
@@ -71,7 +71,7 @@
             align-items: center;
             cursor: pointer;
         }
-
+        select option { background-color: #333; }
     </style>
 </head>
 <body>
@@ -80,6 +80,20 @@
         <h1>Análise Crítica do Jogo "Pai contra Mãe"</h1>
         <form id="quizForm" name="quizForm">
             
+            <fieldset>
+                <legend>Sobre Você</legend>
+                <label for="idade">Idade</label>
+                <input type="number" id="idade" name="idade" min="1" placeholder="Digite sua idade" required>
+
+                <label for="grau_ensino">Grau de Ensino (atual ou mais recente)</label>
+                <select id="grau_ensino" name="grau_ensino" required>
+                    <option value="" disabled selected>Selecione uma opção</option>
+                    <option value="Ensino Medio">Ensino Médio</option>
+                    <option value="EJA">Educação de Jovens e Adultos (EJA)</option>
+                    <option value="Ensino Superior">Ensino Superior (Graduação ou Pós)</option>
+                </select>
+            </fieldset>
+
             <fieldset>
                 <legend>Parte 1: Avaliação Quantitativa</legend>
                 
