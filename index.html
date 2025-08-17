@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análise Crítica | Jogo "Pai contra Mãe"</title>
+    <title>Pesquisa de Opinião | Jogo "Pai contra Mãe"</title>
     <style>
         /* Estilos Gerais */
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            background-image: url('floresta_luarn.png');
+            /* A IMAGEM DE FUNDO FOI ALTERADA AQUI */
+            background-image: url('floresta_luarn.png'); 
+            
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            background-position: center center;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
             
-            /* Usando Flexbox para centralizar o conteúdo vertical e horizontalmente */
+            /* Centraliza o formulário na página */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -29,55 +33,133 @@
         /* Container do Formulário com Efeito Vidro */
         .form-container {
             width: 100%;
-            max-width: 700px;
-            padding: 35px;
+            max-width: 750px;
+            padding: 40px;
             
             /* Efeito Vidro (Glassmorphism) */
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px); /* Suporte para Safari */
+            background: rgba(10, 10, 20, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
-        /* Estilização dos elementos do formulário */
-        h1 { text-align: center; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px; margin-top: 0; }
-        label { display: block; margin-top: 20px; margin-bottom: 8px; font-weight: 600; color: #fff; }
-        input[type="number"], textarea, select { width: 100%; padding: 10px; margin-top: 6px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.3); background-color: rgba(255,255,255,0.1); color: #fff; font-size: 16px; }
-        textarea::placeholder { color: #ccc; }
-        input[type="radio"] { margin-right: 5px; transform: scale(1.1); }
-        .inline-label { display: inline-block !important; margin: 0 10px 0 0; font-weight: normal;}
-        fieldset { border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; margin-top: 25px; padding: 20px; }
-        legend { font-size: 1.2em; font-weight: bold; color: #fff; padding: 0 10px; }
-        button { display: block; width: 100%; padding: 14px; background-color: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 30px; transition: background-color 0.3s, transform 0.2s; }
-        button:hover { background-color: rgba(255, 255, 255, 0.4); transform: translateY(-2px); }
-        button:disabled { background-color: #777; cursor: not-allowed; transform: none; }
+        /* Títulos e Elementos do Formulário */
+        h1 { 
+            text-align: center; 
+            color: #fff; 
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
+            border-bottom: 2px solid rgba(255,255,255,0.3); 
+            padding-bottom: 15px; 
+            margin-bottom: 30px;
+        }
 
-        /* Estilo para a escala de notas */
+        fieldset { 
+            border: none; 
+            margin-top: 25px; 
+        }
+
+        legend { 
+            font-size: 1.4em; 
+            font-weight: bold; 
+            color: #fff; 
+            padding-bottom: 10px;
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 15px;
+        }
+
+        label { 
+            display: block; 
+            margin-top: 20px; 
+            margin-bottom: 10px; 
+            font-weight: 600; 
+            color: #e0e0e0; 
+            font-size: 1.1em;
+        }
+
+        input[type="number"], textarea, select { 
+            width: 100%; 
+            padding: 12px; 
+            border-radius: 8px; 
+            border: 1px solid rgba(255,255,255,0.3); 
+            background-color: rgba(255,255,255,0.1); 
+            color: #fff; 
+            font-size: 16px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+        }
+        
+        textarea::placeholder { color: #ccc; }
+        
+        select option { background-color: #333; }
+
+        .inline-label { 
+            display: inline-flex; 
+            align-items: center;
+            margin: 0 15px 10px 0; 
+            font-weight: normal;
+            color: #fff;
+        }
+        
+        .inline-label input[type="radio"] { 
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* Estilo para a escala de notas de 1 a 10 */
         .rating-scale {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
             flex-wrap: wrap;
-            padding: 5px;
+            padding: 10px;
             background-color: rgba(0,0,0,0.2);
             border-radius: 8px;
         }
-        .rating-scale label {
+        .rating-scale .inline-label {
             margin: 5px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             cursor: pointer;
         }
-        select option { background-color: #333; }
+
+        /* Botão de Envio */
+        button { 
+            display: block; 
+            width: 100%; 
+            padding: 15px; 
+            background: linear-gradient(45deg, #7b2cbf, #9d4edd);
+            color: white; 
+            border: none;
+            border-radius: 8px; 
+            font-size: 18px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            margin-top: 40px; 
+            transition: background 0.3s, transform 0.2s; 
+        }
+        button:hover { 
+            background: linear-gradient(45deg, #9d4edd, #7b2cbf);
+            transform: translateY(-2px); 
+        }
+        button:disabled { 
+            background: #555; 
+            cursor: not-allowed; 
+            transform: none; 
+        }
     </style>
 </head>
 <body>
 
     <div class="form-container">
-        <h1>Análise Crítica do Jogo "Pai contra Mãe"</h1>
+        <h1>Pesquisa de Opinião: Jogo "Pai contra Mãe"</h1>
         <form id="quizForm" name="quizForm">
             
             <fieldset>
@@ -95,10 +177,10 @@
             </fieldset>
 
             <fieldset>
-                <legend>Parte 1: Avaliação Quantitativa</legend>
+                <legend>Avaliação Quantitativa (1 = Ruim, 10 = Excelente)</legend>
                 
-                <label for="q1-tematica">1. Representação da Temática: Quão bem o jogo representa os temas de escravidão, racismo e desigualdade social? (1 = Muito Ruim, 10 = Excelente)</label>
-                <div class="rating-scale" id="q1-tematica">
+                <label>1. O quanto o jogo representa bem temas como escravidão e racismo?</label>
+                <div class="rating-scale">
                     <label class="inline-label">1 <input type="radio" name="nota_tematica" value="1" required></label>
                     <label class="inline-label">2 <input type="radio" name="nota_tematica" value="2"></label>
                     <label class="inline-label">3 <input type="radio" name="nota_tematica" value="3"></label>
@@ -111,8 +193,8 @@
                     <label class="inline-label">10 <input type="radio" name="nota_tematica" value="10"></label>
                 </div>
                 
-                <label for="q2-engajamento">2. Engajamento Narrativo: O quão envolvente foi a narrativa interativa e as suas escolhas na história?</label>
-                 <div class="rating-scale" id="q2-engajamento">
+                <label>2. O quão envolvente foi a narrativa interativa do jogo?</label>
+                 <div class="rating-scale">
                     <label class="inline-label">1 <input type="radio" name="nota_engajamento" value="1" required></label>
                     <label class="inline-label">2 <input type="radio" name="nota_engajamento" value="2"></label>
                     <label class="inline-label">3 <input type="radio" name="nota_engajamento" value="3"></label>
@@ -125,8 +207,8 @@
                     <label class="inline-label">10 <input type="radio" name="nota_engajamento" value="10"></label>
                 </div>
                 
-                <label for="q3-debate">3. Potencial para Debate: O quanto o jogo estimulou a sua reflexão crítica?</label>
-                 <div class="rating-scale" id="q3-debate">
+                <label>3. O quanto o jogo estimulou sua reflexão crítica sobre os temas?</label>
+                 <div class="rating-scale">
                     <label class="inline-label">1 <input type="radio" name="nota_debate" value="1" required></label>
                     <label class="inline-label">2 <input type="radio" name="nota_debate" value="2"></label>
                     <label class="inline-label">3 <input type="radio" name="nota_debate" value="3"></label>
@@ -139,8 +221,8 @@
                     <label class="inline-label">10 <input type="radio" name="nota_debate" value="10"></label>
                 </div>
 
-                <label for="q4-linguagem">4. Linguagem e Acessibilidade: Quão clara e acessível foi a linguagem usada no roteiro?</label>
-                 <div class="rating-scale" id="q4-linguagem">
+                <label>4. Quão clara e acessível foi a linguagem usada no roteiro?</label>
+                 <div class="rating-scale">
                     <label class="inline-label">1 <input type="radio" name="nota_linguagem" value="1" required></label>
                     <label class="inline-label">2 <input type="radio" name="nota_linguagem" value="2"></label>
                     <label class="inline-label">3 <input type="radio" name="nota_linguagem" value="3"></label>
@@ -153,8 +235,8 @@
                     <label class="inline-label">10 <input type="radio" name="nota_linguagem" value="10"></label>
                 </div>
 
-                <label for="q5-experiencia">5. Experiência Geral: Como classificaria a sua experiência geral ao jogar?</label>
-                 <div class="rating-scale" id="q5-experiencia">
+                <label>5. Como você classificaria sua experiência geral com o jogo?</label>
+                 <div class="rating-scale">
                     <label class="inline-label">1 <input type="radio" name="nota_experiencia" value="1" required></label>
                     <label class="inline-label">2 <input type="radio" name="nota_experiencia" value="2"></label>
                     <label class="inline-label">3 <input type="radio" name="nota_experiencia" value="3"></label>
@@ -169,30 +251,32 @@
             </fieldset>
 
             <fieldset>
-                <legend>Parte 2: Opiniões Críticas</legend>
+                <legend>Opiniões Críticas</legend>
 
-                <label for="q6-ponto-forte">6. Qual foi o ponto mais forte do jogo para você? Descreva uma cena, diálogo ou escolha que tenha sido particularmente impactante e explique o porquê.</label>
-                <textarea id="q6-ponto-forte" name="ponto_forte" rows="4" placeholder="Sua resposta aqui..." required></textarea>
+                <label for="ponto_forte">6. Qual foi o ponto mais forte do jogo para você? (Uma cena, diálogo, escolha, etc.)</label>
+                <textarea id="ponto_forte" name="ponto_forte" rows="4" placeholder="Descreva o que mais te impactou e o porquê..." required></textarea>
 
-                <label for="q7-ponto-fraco">7. Qual foi o ponto mais fraco ou que mais precisa de melhoria? O que você sugere para aprimorá-lo?</label>
-                <textarea id="q7-ponto-fraco" name="ponto_fraco" rows="4" placeholder="Sua resposta aqui..." required></textarea>
+                <label for="ponto_fraco">7. Qual foi o ponto mais fraco ou que mais precisa de melhoria?</label>
+                <textarea id="ponto_fraco" name="ponto_fraco" rows="4" placeholder="O que você sugere para aprimorar o jogo?" required></textarea>
 
-                <label for="q8-ferramenta-edu">8. Em sua opinião, o jogo consegue ser uma ferramenta educacional eficaz para discutir a literatura afro-brasileira e a história do Brasil? Por quê?</label>
-                <textarea id="q8-ferramenta-edu" name="ferramenta_educacional" rows="4" placeholder="Sua resposta aqui..." required></textarea>
+                <label for="ferramenta_educacional">8. Você acredita que o jogo é uma ferramenta educacional eficaz? Por quê?</label>
+                <textarea id="ferramenta_educacional" name="ferramenta_educacional" rows="4" placeholder="Comente sobre o potencial de uso em sala de aula..." required></textarea>
                 
-                <label for="q9-adaptacao">9. A adaptação da obra de Machado de Assis para Graphic Novel interativa lhe pareceu bem-sucedida? A essência da obra foi preservada?</label>
-                <textarea id="q9-adaptacao" name="sucesso_adaptacao" rows="4" placeholder="Sua resposta aqui..." required></textarea>
+                <label for="sucesso_adaptacao">9. A adaptação da obra de Machado de Assis foi bem-sucedida? A essência foi preservada?</label>
+                <textarea id="sucesso_adaptacao" name="sucesso_adaptacao" rows="4" placeholder="Sua opinião sobre a fidelidade à obra original..." required></textarea>
 
-                <label>10. Você leu o conto original "Pai contra Mãe", de Machado de Assis?</label>
+                <label>10. Você já havia lido o conto original "Pai contra Mãe"?</label>
                 <div>
-                    <input type="radio" id="leu-sim" name="leu_conto" value="Sim" required>
-                    <label for="leu-sim" class="inline-label">Sim</label>
-                    <input type="radio" id="leu-nao" name="leu_conto" value="Não">
-                    <label for="leu-nao" class="inline-label">Não</label>
+                    <label class="inline-label">
+                        <input type="radio" name="leu_conto" value="Sim" required> Sim
+                    </label>
+                    <label class="inline-label">
+                        <input type="radio" name="leu_conto" value="Não"> Não
+                    </label>
                 </div>
             </fieldset>
 
-            <button type="submit" id="submit-button">Enviar Análise</button>
+            <button type="submit" id="submit-button">Enviar Pesquisa</button>
         </form>
     </div>
 
@@ -204,7 +288,7 @@
         form.addEventListener('submit', function(e) {
             e.preventDefault(); 
             
-            // URL do seu script do Google para receber os dados do formulário
+            // !!! IMPORTANTE: Substitua pela URL da SUA implantação do Google Script !!!
             const scriptURL = 'https://script.google.com/macros/s/AKfycbygLZpB3DFLZsVylgcq37kVdNXj1dwlkdz5bn9Kw2hw283-cEWYHo48ybhFYdn9rcQ0/exec';
 
             submitButton.disabled = true;
@@ -213,24 +297,21 @@
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
                 .then(response => {
                     console.log('Success!', response);
-                    
                     formContainer.innerHTML = `
                         <div style="text-align: center; padding: 50px 0; color: #fff;">
                             <h1 style="border-bottom: none;">Obrigado!</h1>
-                            <p style="font-size: 1.2em;">Sua análise foi enviada com sucesso.</p>
+                            <p style="font-size: 1.2em;">Sua opinião foi enviada com sucesso e irá contribuir muito para o projeto.</p>
                         </div>
                     `;
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
-                    alert('Ocorreu um erro ao enviar suas respostas. Por favor, tente novamente.');
+                    alert('Houve um erro ao enviar sua pesquisa. Por favor, verifique sua conexão e tente novamente.');
                     submitButton.disabled = false;
-                    submitButton.textContent = 'Enviar Análise';
+                    submitButton.textContent = 'Enviar Pesquisa';
                 });
         });
     </script>
 
 </body>
 </html>
-
-
