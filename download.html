@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Download - Jogo "Pai contra Mãe"</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
+    <style>
+        * { box-sizing: border-box; margin:0; padding:0; }
+        body {
+            background-image: url('fundo cidade noite.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            font-family: 'Press Start 2P', cursive;
+            color: #FFF;
+            padding: 20px;
+            image-rendering: pixelated;
+            min-height: 100vh;
+        }
+
+        /* mesma proporção do index */
+        .container { width:100%; max-width:1200px; margin:0 auto; position:relative; }
+
+        .pixel-border {
+            position: relative;
+            border: 4px solid #FFFFFF;
+            box-shadow: 0 0 0 4px #000000;
+            background: #006400;
+        }
+
+        header {
+            display:flex; justify-content:space-between; align-items:center;
+            padding:16px 24px; background:#004d00; margin-bottom:20px;
+        }
+        header h1 { font-size:1.2em; text-shadow:2px 2px 0 #000; letter-spacing:1px; }
+        nav ul { list-style:none; display:flex; gap:20px; }
+        nav a { color:#FFF; text-decoration:none; font-size:0.9em; padding:8px; text-shadow:1px 1px 0 #000; }
+        nav a:hover, nav a.active { color:#FFFF00; transform:translateY(-2px); }
+
+        .content-box { width:100%; padding:30px; margin-bottom:30px; position:relative; }
+        .content-box h2 { text-align:center; font-size:1.5em; text-shadow:3px 3px 0 #000; padding-bottom:16px; margin-bottom:24px; border-bottom:4px solid #FFF; color:#FFFF00; }
+
+        /* cada caixa de download empilhada (uma abaixo da outra) */
+        .distro-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 10px;
+        }
+
+        .download-item {
+            display:flex; flex-direction:column; padding:18px; margin-bottom:0;
+            background: rgba(0,77,0,0.55); border:4px solid #FFF;
+            gap:12px; /* espaçamento entre elementos internos */
+            width:100%;
+        }
+        .download-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:10px; flex-wrap:wrap;}
+        .download-header h3 { font-size:1.05em; text-shadow:2px 2px 0 #000; margin:0; }
+
+        .download-version { background:#8B0000; padding:6px 10px; font-size:0.8em; display:inline-block; }
+
+        .download-info {
+            display:grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+            gap:10px;
+            margin-bottom:6px;
+            font-size:0.95em;
+            line-height: 1.6;
+        }
+
+        .info-item {
+            word-break: break-word;
+            white-space: normal;
+            color: #fff;
+        }
+        .info-item strong { color:#FFFF00; display:block; margin-bottom:6px; }
+
+        .download-buttons { display:flex; gap:10px; flex-wrap:wrap; margin-top:auto; }
+        .download-button {
+            display:inline-block; padding:10px 16px; background:#8B0000; color:#FFF; text-decoration:none;
+            border:4px solid; border-color:#fff #000 #000 #fff; font-family:'Press Start 2P', cursive; font-size:0.85em; cursor:pointer; text-shadow:1px 1px 0 #000;
+        }
+        .download-button:hover { background:#A52A2A; transform:translateY(-3px); }
+
+        .small-note { font-size:0.78em; color:#ddd; margin-top:10px; line-height:1.6; }
+
+        .requirements { padding:20px; background:rgba(0,77,0,0.5); border:4px solid #FFF; margin-top:20px; line-height:1.6; }
+        .requirements h3 { margin-bottom:15px; color:#FFFF00; text-shadow:2px 2px 0 #000; }
+        .requirements ul { list-style:none; font-size:0.95em; line-height:1.8; }
+        .requirements li { margin-bottom:8px; position:relative; padding-left:20px; }
+        .requirements li:before { content: ">"; position:absolute; left:0; color:#FFFF00; }
+
+        /* Seção materiais & suporte com quebra correta e espaçamento */
+        .support-contact { word-break: break-word; white-space: normal; line-height:1.6; color:#fff; }
+
+        footer { text-align:center; padding:20px; font-size:0.8em; color:#AAA; text-shadow:1px 1px 0 #000; margin-top:20px; }
+
+        @media (max-width:768px) {
+            header { flex-direction:column; gap:15px; }
+            nav ul { flex-wrap:wrap; justify-content:center; }
+            .download-header { flex-direction:column; align-items:flex-start; gap:8px; }
+            .download-info { grid-template-columns:1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="pixel-border">
+            <h1>PAI CONTRA MÃE</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="download.html" class="active">Download</a></li>
+                    <li><a href="pesquisa.html">Pesquisa</a></li>
+                    <li><a href="#">Sobre</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="downloads">
+                <div class="content-box pixel-border">
+                    <h2>BAIXAR JOGO — DISTRIBUIÇÕES</h2>
+
+                    <!-- LISTA EMPILHADA: cada caixa uma abaixo da outra -->
+                    <div class="distro-list">
+                        <!-- WINDOWS -->
+                        <div class="download-item">
+                            <div class="download-header">
+                                <h3>WINDOWS</h3>
+                                <span class="download-version">v1.0.0</span>
+                            </div>
+
+                            <div class="download-info">
+                                <div class="info-item">
+                                    <strong>Pacotes</strong>
+                                    Instalador (.exe) • Portátil (.zip)
+                                </div>
+                                <div class="info-item">
+                                    <strong>Tamanho</strong>
+                                    ~250MB (instalador) / ~300MB (zip)
+                                </div>
+                                <div class="info-item">
+                                    <strong>Arquitetura</strong>
+                                    64-bit (x86_64)
+                                </div>
+                                <div class="info-item">
+                                    <strong>Lançamento</strong>
+                                    15/08/2025
+                                </div>
+                            </div>
+
+                            <p>Instalador com atalho no menu Iniciar ou versão portátil (zip) para executar sem instalar.</p>
+
+                            <div class="download-buttons">
+                                <a class="download-button" href="downloads/pai-contra-mae-setup-1.0.0.exe" download>Baixar .exe</a>
+                                <a class="download-button" href="downloads/pai-contra-mae-portable-1.0.0.zip" download>Baixar .zip</a>
+                            </div>
+
+                            <div class="small-note">Recomendado: Windows 10/11 64-bit. Execute como administrador para instalar.</div>
+                        </div>
+
+                        <!-- LINUX -->
+                        <div class="download-item">
+                            <div class="download-header">
+                                <h3>LINUX</h3>
+                                <span class="download-version">v1.0.0</span>
+                            </div>
+
+                            <div class="download-info">
+                                <div class="info-item">
+                                    <strong>Pacotes</strong>
+                                    AppImage • tar.gz • .deb (se aplicável)
+                                </div>
+                                <div class="info-item">
+                                    <strong>Tamanho</strong>
+                                    ~270MB (AppImage) / ~290MB (tar.gz)
+                                </div>
+                                <div class="info-item">
+                                    <strong>Arquitetura</strong>
+                                    x86_64 (amd64)
+                                </div>
+                                <div class="info-item">
+                                    <strong>Lançamento</strong>
+                                    15/08/2025
+                                </div>
+                            </div>
+
+                            <p>AppImage executável (chmod +x) é recomendado para maior compatibilidade; tar.gz contém binários e assets.</p>
+
+                            <div class="download-buttons">
+                                <a class="download-button" href="downloads/pai-contra-mae-1.0.0-x86_64.AppImage" download>Baixar AppImage</a>
+                                <a class="download-button" href="downloads/pai-contra-mae-1.0.0-linux.tar.gz" download>Baixar tar.gz</a>
+                            </div>
+
+                            <div class="small-note">Para executar AppImage: <code>chmod +x nome.AppImage</code> e depois <code>./nome.AppImage</code></div>
+                        </div>
+
+                        <!-- ANDROID -->
+                        <div class="download-item">
+                            <div class="download-header">
+                                <h3>ANDROID</h3>
+                                <span class="download-version">v1.0.0</span>
+                            </div>
+
+                            <div class="download-info">
+                                <div class="info-item">
+                                    <strong>Pacotes</strong>
+                                    APK (instalador) • Play Store (em breve)
+                                </div>
+                                <div class="info-item">
+                                    <strong>Tamanho</strong>
+                                    ~120MB (APK)
+                                </div>
+                                <div class="info-item">
+                                    <strong>Compatibilidade</strong>
+                                    Android 8.0 (Oreo) ou superior
+                                </div>
+                                <div class="info-item">
+                                    <strong>Lançamento</strong>
+                                    15/08/2025
+                                </div>
+                            </div>
+
+                            <p>APK direto para instalação manual. Em breve publicação na Play Store (se aplicável).</p>
+
+                            <div class="download-buttons">
+                                <a class="download-button" href="downloads/pai-contra-mae-1.0.0.apk" download>Baixar APK</a>
+                                <a class="download-button" href="#" onclick="alert('Em breve na Play Store'); return false;">Play Store</a>
+                            </div>
+
+                            <div class="small-note">Para instalar APK: habilite "Instalar apps de fontes desconhecidas" conforme instruções do seu aparelho.</div>
+                        </div>
+                    </div>
+
+                    <!-- SEÇÃO ADICIONAL: MATERIAIS & SUPORTE -->
+                    <div class="download-item" style="margin-top:6px;">
+                        <div class="download-header">
+                            <h3>MATERIAIS & SUPORTE</h3>
+                            <span class="download-version">v1.0.0</span>
+                        </div>
+
+                        <div class="download-info">
+                            <div class="info-item"><strong>Material Didático</strong> PDF com guia para professores</div>
+                            <div class="info-item"><strong>Assets</strong> Texturas, sons (zip)</div>
+                            <div class="info-item"><strong>Patch</strong> Correções e atualização</div>
+                            <div class="info-item"><strong>Suporte</strong> <span class="support-contact">contato@seudominio.com</span></div>
+                        </div>
+
+                        <div class="download-buttons">
+                            <a class="download-button" href="downloads/material-didatico-v1.0.0.pdf" download>Baixar Material</a>
+                            <a class="download-button" href="downloads/assets-v1.0.0.zip" download>Baixar Assets</a>
+                            <a class="download-button" href="downloads/patch-1.0.1.zip" download>Baixar Patch</a>
+                        </div>
+                    </div>
+
+                    <!-- REQUISITOS GERAIS -->
+                    <div class="requirements">
+                        <h3>REQUISITOS (POR PLATAFORMA)</h3>
+                        <ul>
+                            <li><strong>Windows:</strong> Windows 10 ou superior (64-bit), 4GB RAM, 500MB livre</li>
+                            <li><strong>Linux:</strong> Kernel recente, 4GB RAM, depende da distro (recomenda-se glibc compatível)</li>
+                            <li><strong>Android:</strong> Android 8.0+, 4GB RAM recomendado</li>
+                        </ul>
+                        <div class="small-note">Observação: substitua os links de download pelos arquivos reais no diretório <code>/downloads/</code> do seu servidor.</div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <footer class="pixel-border">
+            <p>Jogo educativo desenvolvido para fins acadêmicos - Baseado no conto "Pai contra Mãe" de Machado de Assis</p>
+            <p>Todos os direitos reservados © 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
