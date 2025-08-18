@@ -1,240 +1,3 @@
-<!-- <!-- <!-- <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesquisa - Jogo "Pai contra Mãe"</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            background-image: url('floresta_luarn.png'); 
-            background-size: cover; 
-            background-repeat: no-repeat; 
-            background-attachment: fixed; 
-            background-position: center center; 
-            font-family: 'Press Start 2P', cursive; 
-            color: #FFFFFF; 
-            padding: 20px; 
-            image-rendering: pixelated; 
-        }
-        .container { width: 100%; max-width: 900px; margin: 0 auto; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #004d00; border: 4px solid #FFFFFF; margin-bottom: 20px; box-shadow: 0 0 0 4px #000000; }
-        header h1 { font-size: 1.2em; text-shadow: 2px 2px 0 #000; }
-        nav ul { list-style: none; display: flex; gap: 20px; }
-        nav a { color: #FFFFFF; text-decoration: none; font-size: 1em; padding: 8px; transition: color 0.2s; }
-        nav a:hover, nav a.active { color: #FFFF00; text-shadow: 2px 2px 0 #000; }
-        .content-box { width: 100%; padding: 30px; background: #006400; border: 4px solid #FFFFFF; box-shadow: 0 0 0 4px #000000; }
-        .content-box h2 { text-align: center; font-size: 1.5em; text-shadow: 3px 3px 0 #000000; padding-bottom: 16px; margin-bottom: 24px; border-bottom: 4px solid #FFFFFF; }
-        fieldset { border: none; margin-top: 24px; }
-        legend { font-size: 1.2em; background-color: #004d00; padding: 8px; border: 4px solid #FFFFFF; margin-bottom: 16px; }
-        label { display: block; margin-top: 24px; margin-bottom: 8px; font-size: 1em; line-height: 1.5; }
-        input[type="number"], textarea, select { width: 100%; padding: 12px; border: 4px solid; border-color: #000 #fff #fff #000; background-color: #004d00; color: #FFFFFF; font-family: 'Press Start 2P', cursive; font-size: 1em; border-radius: 0; }
-        input:focus, textarea:focus, select:focus { outline: 4px dashed #FFFF00; outline-offset: 2px; }
-        
-        /* ESTILO DAS OPÇÕES DE NOTA */
-        .rating-scale { 
-            display: flex; 
-            justify-content: center; /* Centraliza os botões */
-            flex-wrap: wrap; 
-            gap: 8px; /* Adiciona espaçamento entre os botões */
-            padding: 8px; 
-            border: 4px solid #000; 
-            background-color: rgba(0,0,0,0.2); 
-        }
-        .inline-label { 
-            display: inline-flex; 
-            align-items: center; 
-            margin: 0; /* Remove margem extra */
-            cursor: pointer; 
-            font-size: 0.9em; 
-        }
-        .inline-label input[type="radio"] { 
-            display: none; /* esconde o input original */
-        }
-        .inline-label span { 
-            background: #004d00; 
-            padding: 8px 12px; 
-            border-radius: 0; /* Estilo mais "pixelado" */
-            border: 2px solid #fff; 
-            transition: background 0.2s, color 0.2s, transform 0.1s; 
-        }
-        .inline-label:hover span { 
-            background: #228B22; 
-        }
-
-        /* --- ALTERAÇÃO PRINCIPAL --- */
-        /* Estilo para a opção selecionada */
-        .inline-label input[type="radio"]:checked + span { 
-            background-color: #000000; /* Fundo preto quando marcado */
-            color: #FFFF00; /* Texto amarelo para contraste */
-            border-color: #FFFF00; /* Borda amarela para destacar */
-            transform: scale(1.1); 
-            box-shadow: 0 0 8px #FFFF00; 
-        }
-
-        button[type="submit"] { 
-            display: block; 
-            width: 100%; 
-            padding: 16px; 
-            background: #004d00; 
-            color: white; 
-            border: 4px solid; 
-            border-color: #fff #000 #000 #fff; 
-            font-family: 'Press Start 2P', cursive; 
-            font-size: 1.2em; 
-            cursor: pointer; 
-            margin-top: 32px; 
-            transition: background 0.2s; 
-        }
-        button[type="submit"]:hover { background: #006400; }
-        button[type="submit"]:active { border-color: #000 #fff #fff #000; transform: translateY(2px); }
-        button[type="submit"]:disabled { background: #555; cursor: not-allowed; color: #aaa; border-color: #777; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Pai Contra Mãe</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="pesquisa.html" class="active">Pesquisa</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <main>
-            <section id="pesquisa">
-                <div class="content-box" id="form-wrapper">
-                    <h2>Pesquisa de Opinião: Pai Contra Mãe</h2>
-                    <form id="quizForm" name="quizForm">
-                        
-                        <fieldset>
-                            <legend>Dados Gerais</legend>
-                            <label for="escolaridade">Qual seu nível de escolaridade?</label>
-                            <select id="escolaridade" name="Escolaridade" required>
-                                <option value="" disabled selected>Selecione uma opção</option>
-                                <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto</option>
-                                <option value="Ensino Fundamental Completo">Ensino Fundamental Completo</option>
-                                <option value="Ensino Medio Incompleto">Ensino Médio Incompleto</option>
-                                <option value="Ensino Medio Completo">Ensino Médio Completo</option>
-                                <option value="Ensino Superior Incompleto">Ensino Superior Incompleto</option>
-                                <option value="Ensino Superior Completo">Ensino Superior Completo</option>
-                                <option value="Pos-graduacao">Pós-graduação</option>
-                            </select>
-                        </fieldset>
-
-                        <fieldset>
-                            <legend>Avaliação (de 1 a 10)</legend>
-
-                            <label>1. Nota Temática: O quão bem o jogo representou os temas do conto?</label>
-                            <div class="rating-scale" data-name="NotaTematica"></div>
-
-                            <label>2. Nota Engajamento: O quão envolvente foi a narrativa interativa?</label>
-                            <div class="rating-scale" data-name="NotaEngajamento"></div>
-
-                            <label>3. Nota Debate: O quanto o jogo estimulou sua reflexão sobre os temas?</label>
-                            <div class="rating-scale" data-name="NotaDebate"></div>
-
-                            <label>4. Nota Linguagem: A linguagem visual e textual foi adequada?</label>
-                            <div class="rating-scale" data-name="NotaLinguagem"></div>
-
-                            <label>5. Nota Experiência: Qual sua nota para a experiência geral do jogo?</label>
-                            <div class="rating-scale" data-name="NotaExperiencia"></div>
-                        </fieldset>
-
-                        <fieldset>
-                            <legend>Opiniões Discursivas</legend>
-                            <label for="ponto_forte">6. Ponto Forte: Qual foi o aspecto mais positivo do jogo?</label>
-                            <textarea id="ponto_forte" name="PontoForte" rows="4" required></textarea>
-
-                            <label for="ponto_fraco">7. Ponto Fraco: Que pontos poderiam ser melhorados?</label>
-                            <textarea id="ponto_fraco" name="PontoFraco" rows="4" required></textarea>
-
-                            <label for="ferramenta_educacional">8. Ferramenta Educacional: Você considera o jogo uma boa ferramenta educacional?</label>
-                            <textarea id="ferramenta_educacional" name="FerramentaEducacional" rows="4" required></textarea>
-                            
-                            <label for="sucesso_adaptacao">9. Sucesso Adaptação: A adaptação do conto foi bem-sucedida?</label>
-                            <textarea id="sucesso_adaptacao" name="SucessoAdaptacao" rows="4" required></textarea>
-                        </fieldset>
-
-                        <fieldset>
-                             <legend>Leitura Prévia</legend>
-                             <label>10. Leu o Conto? Você já havia lido o conto original antes de jogar?</label>
-                             <div class="rating-scale">
-                                 <label class="inline-label"><input type="radio" name="LeuConto" value="Sim" required><span>Sim</span></label>
-                                 <label class="inline-label"><input type="radio" name="LeuConto" value="Nao"><span>Não</span></label>
-                             </div>
-                        </fieldset>
-
-                        <button type="submit" id="submit-button">Enviar Respostas</button>
-                    </form>
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <script>
-        // Executa o script quando o conteúdo da página estiver totalmente carregado
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // --- NOVO SCRIPT PARA GERAR AS NOTAS ---
-            // Seleciona todos os containers de notas
-            const ratingScales = document.querySelectorAll('.rating-scale[data-name]');
-            
-            ratingScales.forEach(scale => {
-                const name = scale.dataset.name; // Pega o nome do grupo (ex: "NotaTematica")
-                let buttonsHTML = '';
-                // Cria um botão para cada nota de 1 a 10
-                for (let i = 1; i <= 10; i++) {
-                    buttonsHTML += `
-                        <label class="inline-label">
-                            <input type="radio" name="${name}" value="${i}" required>
-                            <span>${i}</span>
-                        </label>`;
-                }
-                scale.innerHTML = buttonsHTML; // Insere os botões no container
-            });
-
-
-            // --- SCRIPT ORIGINAL PARA ENVIO DO FORMULÁRIO ---
-            const form = document.getElementById('quizForm');
-            const submitButton = document.getElementById('submit-button');
-            const formWrapper = document.getElementById('form-wrapper');
-
-            form.addEventListener('submit', function(e) {
-                e.preventDefault(); 
-                const scriptURL = 'https://script.google.com/macros/s/AKfycbwpY-pcZb_P7rii_vzsFSYT5HMXwCAoQqYySlpryJnZzghJfd6YhsbNDktcm6NLlIgm7Q/exec';
-                submitButton.disabled = true;
-                submitButton.textContent = 'Enviando...';
-                
-                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                    .then(response => {
-                        formWrapper.innerHTML = `<div style="text-align: center; padding: 50px 0;">
-                            <h2 style="border-bottom: none;">Obrigado!</h2>
-                            <p style="font-size: 1em; line-height: 1.5;">Sua opinião foi enviada com sucesso!</p>
-                        </div>`;
-                    })
-                    .catch(error => {
-                        alert('Houve um erro. Tente novamente.');
-                        submitButton.disabled = false;
-                        submitButton.textContent = 'Enviar Respostas';
-                    });
-            });
-
-        });
-    </script>
-</body>
-</html> -->
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -369,9 +132,9 @@
             <h1>PAI CONTRA MÃE</h1>
             <nav>
                 <ul>
-                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html" class="active">Início</a></li>
                     <li><a href="download.html">Download</a></li>
-                    <li><a href="pesquisa.html" class="active">Pesquisa</a></li>
+                    <li><a href="pesquisa.html">Pesquisa</a></li>
                     <li><a href="#">Sobre</a></li>
                 </ul>
             </nav>
@@ -452,6 +215,14 @@
 
                             <label for="comparacao">10. Como você compara a experiência do jogo com a leitura do conto?</label>
                             <textarea id="comparacao" name="Comparacao" rows="4" placeholder="Se leu o conto, compare as experiências"></textarea>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>TERMO DE CIÊNCIA</legend>
+                            <label style="text-align: justify;">
+                                <input type="checkbox" name="termo_ciencia" required style="width: auto; display: inline-block; margin-right: 10px;">
+                                Declaro que estou ciente de que minhas respostas serão utilizadas para fins de estudo e pesquisa acadêmica, e que poderão ser divulgadas e utilizadas em produções científicas e acadêmicas relacionadas ao projeto. Todas as informações serão tratadas de forma anônima e confidencial, em conformidade com as normas éticas de pesquisa.
+                            </label>
                         </fieldset>
 
                         <div class="submit-container">
