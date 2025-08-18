@@ -3,315 +3,385 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesquisa de Opinião | Jogo "Pai contra Mãe"</title>
+    <title>Pai Contra Mãe - Jogo Educativo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        /* Estilos Gerais */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            /* A IMAGEM DE FUNDO FOI ALTERADA AQUI */
-            background-image: url('floresta_luarn.png'); 
-            
+            background-image: url('floresta_luarn.png');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center center;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            
-            /* Centraliza o formulário na página */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            font-family: 'Press Start 2P', cursive;
+            color: #FFFFFF;
             padding: 20px;
+            image-rendering: pixelated;
+            min-height: 100vh;
         }
-
-        /* Container do Formulário com Efeito Vidro */
-        .form-container {
+        .container {
             width: 100%;
-            max-width: 750px;
-            padding: 40px;
-            
-            /* Efeito Vidro (Glassmorphism) */
-            background: rgba(10, 10, 20, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
         }
 
-        /* Títulos e Elementos do Formulário */
-        h1 { 
-            text-align: center; 
-            color: #fff; 
-            font-size: 2em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
-            border-bottom: 2px solid rgba(255,255,255,0.3); 
-            padding-bottom: 15px; 
+        /* Pixel border effect */
+        .pixel-border {
+            position: relative;
+            border: 4px solid #FFFFFF;
+            box-shadow: 0 0 0 4px #000000;
+            background: rgba(0, 100, 0, 0.8);
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            background: #004d00;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            font-size: 1.5em;
+            text-shadow: 3px 3px 0 #000;
+            letter-spacing: 1px;
+        }
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 0.9em;
+            padding: 8px;
+            transition: all 0.2s;
+            position: relative;
+            text-shadow: 1px 1px 0 #000;
+        }
+        nav a:hover, nav a.active { color: #FFFF00; transform: translateY(-2px); }
+        nav a:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFFF00;
+            transition: width 0.3s;
+        }
+        nav a:hover:after, nav a.active:after { width: 100%; }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            text-align: center;
             margin-bottom: 30px;
         }
-
-        fieldset { 
-            border: none; 
-            margin-top: 25px; 
+        .hero h2 {
+            font-size: 2em;
+            text-shadow: 4px 4px 0 #000;
+            margin-bottom: 20px;
+            color: #FFFF00;
+        }
+        .hero p {
+            font-size: 1em;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 0 #000;
         }
 
-        legend { 
-            font-size: 1.4em; 
-            font-weight: bold; 
-            color: #fff; 
-            padding-bottom: 10px;
+        /* BANNER grande (background) entre HERO e SOBRE */
+        .banner-bg {
             width: 100%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 24px 0;
+            aspect-ratio: 16 / 6;   /* proporção principal */
+            background-image: url('capamenu.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            border: 4px solid #FFFFFF;
+            box-shadow: 0 0 0 4px #000000;
+            overflow: hidden;
+        }
+        @media (max-width: 768px) {
+            .banner-bg { aspect-ratio: 4 / 3; }
+        }
+
+        /* Game Info */
+        .game-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 30px;
+        }
+        .info-card {
+            padding: 20px;
+            background: rgba(0, 77, 0, 0.7);
+            border: 4px solid #FFFFFF;
+            transition: transform 0.3s;
+        }
+        .info-card:hover {
+            transform: scale(1.05);
+            background: rgba(0, 100, 0, 0.9);
+        }
+        .info-card h3 {
+            color: #FFFF00;
             margin-bottom: 15px;
+            text-shadow: 2px 2px 0 #000;
+            font-size: 1.2em;
         }
+        .info-card p { font-size: 0.8em; line-height: 1.6; }
 
-        label { 
-            display: block; 
-            margin-top: 20px; 
-            margin-bottom: 10px; 
-            font-weight: 600; 
-            color: #e0e0e0; 
-            font-size: 1.1em;
+        /* Carousel (one image at a time) */
+        .screenshots {
+            padding: 30px;
+            text-align: center;
         }
-
-        input[type="number"], textarea, select { 
-            width: 100%; 
-            padding: 12px; 
-            border-radius: 8px; 
-            border: 1px solid rgba(255,255,255,0.3); 
-            background-color: rgba(255,255,255,0.1); 
-            color: #fff; 
-            font-size: 16px;
-            transition: border-color 0.3s, box-shadow 0.3s;
+        .screenshots h2 {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 0 #000;
         }
-        
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: rgba(255, 255, 255, 0.7);
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-        }
-        
-        textarea::placeholder { color: #ccc; }
-        
-        select option { background-color: #333; }
-
-        .inline-label { 
-            display: inline-flex; 
-            align-items: center;
-            margin: 0 15px 10px 0; 
-            font-weight: normal;
-            color: #fff;
-        }
-        
-        .inline-label input[type="radio"] { 
-            margin-right: 8px;
-            width: 18px;
-            height: 18px;
-        }
-        
-        /* Estilo para a escala de notas de 1 a 10 */
-        .rating-scale {
+        .carousel {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background: rgba(0,0,0,0.25);
+            border: 4px solid #FFFFFF;
+            overflow: hidden;
             display: flex;
-            justify-content: space-around;
             align-items: center;
-            flex-wrap: wrap;
-            padding: 10px;
-            background-color: rgba(0,0,0,0.2);
-            border-radius: 8px;
+            justify-content: center;
         }
-        .rating-scale .inline-label {
-            margin: 5px;
-            cursor: pointer;
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(1);
+            transition: opacity 0.8s ease, transform 0.6s ease;
+        }
+        .carousel-slide.active { opacity: 1; z-index: 2; }
+        .carousel-slide img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            image-rendering: pixelated;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+        }
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 5;
+        }
+        .carousel-indicators button {
+            width: 12px; height: 12px; border-radius: 50%;
+            border: 2px solid #fff; background: rgba(0,0,0,0.3); cursor: pointer;
+        }
+        .carousel-indicators button.active {
+            background: #FFFF00; border-color: #000;
         }
 
-        /* Botão de Envio */
-        button { 
-            display: block; 
-            width: 100%; 
-            padding: 15px; 
-            background: linear-gradient(45deg, #7b2cbf, #9d4edd);
-            color: white; 
-            border: none;
-            border-radius: 8px; 
-            font-size: 18px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            margin-top: 40px; 
-            transition: background 0.3s, transform 0.2s; 
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
         }
-        button:hover { 
-            background: linear-gradient(45deg, #9d4edd, #7b2cbf);
-            transform: translateY(-2px); 
+        .cta-button {
+            padding: 15px 30px;
+            background: #004d00;
+            color: white;
+            border: 4px solid;
+            border-color: #fff #000 #000 #fff;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            text-shadow: 2px 2px 0 #000;
+            text-align: center;
         }
-        button:disabled { 
-            background: #555; 
-            cursor: not-allowed; 
-            transform: none; 
+        .cta-button:hover { background: #006400; color: #FFFF00; transform: translateY(-5px); }
+        .cta-button.download { background: #8B0000; }
+        .cta-button.download:hover { background: #A52A2A; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.7em;
+            color: #AAA;
+            text-shadow: 1px 1px 0 #000;
+            margin-top: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .hero h2 { font-size: 1.5em; }
+            .hero p { font-size: 0.9em; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .carousel { aspect-ratio: 4 / 3; }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header class="pixel-border">
+            <h1>PAI CONTRA MÃE</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="download.html">Download</a></li>
+                    <li><a href="pesquisa.html">Pesquisa</a></li>
+                    <li><a href="#">Sobre</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <div class="form-container">
-        <h1>Pesquisa de Opinião: Jogo "Pai contra Mãe"</h1>
-        <form id="quizForm" name="quizForm">
-            
-            <fieldset>
-                <legend>Sobre Você</legend>
-                <label for="idade">Idade</label>
-                <input type="number" id="idade" name="idade" min="1" placeholder="Digite sua idade" required>
+        <main>
+            <section class="hero pixel-border">
+                <h2>UMA EXPERIÊNCIA INTERATIVA BASEADA NO CONTO DE MACHADO DE ASSIS</h2>
+                <p>Explore os dilemas morais da escravidão no Brasil Imperial através deste jogo educativo que combina narrativa interativa com reflexão crítica.</p>
 
-                <label for="grau_ensino">Grau de Ensino (atual ou mais recente)</label>
-                <select id="grau_ensino" name="grau_ensino" required>
-                    <option value="" disabled selected>Selecione uma opção</option>
-                    <option value="Ensino Medio">Ensino Médio</option>
-                    <option value="EJA">Educação de Jovens e Adultos (EJA)</option>
-                    <option value="Ensino Superior">Ensino Superior (Graduação ou Pós)</option>
-                </select>
-            </fieldset>
-
-            <fieldset>
-                <legend>Avaliação Quantitativa (1 = Ruim, 10 = Excelente)</legend>
-                
-                <label>1. O quanto o jogo representa bem temas como escravidão e racismo?</label>
-                <div class="rating-scale">
-                    <label class="inline-label">1 <input type="radio" name="nota_tematica" value="1" required></label>
-                    <label class="inline-label">2 <input type="radio" name="nota_tematica" value="2"></label>
-                    <label class="inline-label">3 <input type="radio" name="nota_tematica" value="3"></label>
-                    <label class="inline-label">4 <input type="radio" name="nota_tematica" value="4"></label>
-                    <label class="inline-label">5 <input type="radio" name="nota_tematica" value="5"></label>
-                    <label class="inline-label">6 <input type="radio" name="nota_tematica" value="6"></label>
-                    <label class="inline-label">7 <input type="radio" name="nota_tematica" value="7"></label>
-                    <label class="inline-label">8 <input type="radio" name="nota_tematica" value="8"></label>
-                    <label class="inline-label">9 <input type="radio" name="nota_tematica" value="9"></label>
-                    <label class="inline-label">10 <input type="radio" name="nota_tematica" value="10"></label>
+                <div class="cta-buttons">
+                    <a href="download.html" class="cta-button download">BAIXAR AGORA</a>
+                    <a href="#sobre" class="cta-button">SAIBA MAIS</a>
                 </div>
-                
-                <label>2. O quão envolvente foi a narrativa interativa do jogo?</label>
-                 <div class="rating-scale">
-                    <label class="inline-label">1 <input type="radio" name="nota_engajamento" value="1" required></label>
-                    <label class="inline-label">2 <input type="radio" name="nota_engajamento" value="2"></label>
-                    <label class="inline-label">3 <input type="radio" name="nota_engajamento" value="3"></label>
-                    <label class="inline-label">4 <input type="radio" name="nota_engajamento" value="4"></label>
-                    <label class="inline-label">5 <input type="radio" name="nota_engajamento" value="5"></label>
-                    <label class="inline-label">6 <input type="radio" name="nota_engajamento" value="6"></label>
-                    <label class="inline-label">7 <input type="radio" name="nota_engajamento" value="7"></label>
-                    <label class="inline-label">8 <input type="radio" name="nota_engajamento" value="8"></label>
-                    <label class="inline-label">9 <input type="radio" name="nota_engajamento" value="9"></label>
-                    <label class="inline-label">10 <input type="radio" name="nota_engajamento" value="10"></label>
-                </div>
-                
-                <label>3. O quanto o jogo estimulou sua reflexão crítica sobre os temas?</label>
-                 <div class="rating-scale">
-                    <label class="inline-label">1 <input type="radio" name="nota_debate" value="1" required></label>
-                    <label class="inline-label">2 <input type="radio" name="nota_debate" value="2"></label>
-                    <label class="inline-label">3 <input type="radio" name="nota_debate" value="3"></label>
-                    <label class="inline-label">4 <input type="radio" name="nota_debate" value="4"></label>
-                    <label class="inline-label">5 <input type="radio" name="nota_debate" value="5"></label>
-                    <label class="inline-label">6 <input type="radio" name="nota_debate" value="6"></label>
-                    <label class="inline-label">7 <input type="radio" name="nota_debate" value="7"></label>
-                    <label class="inline-label">8 <input type="radio" name="nota_debate" value="8"></label>
-                    <label class="inline-label">9 <input type="radio" name="nota_debate" value="9"></label>
-                    <label class="inline-label">10 <input type="radio" name="nota_debate" value="10"></label>
+            </section>
+
+            <!-- BANNER grande com capamenu.png -->
+            <section class="banner-bg pixel-border" aria-label="Capa do menu"></section>
+
+            <section id="sobre" class="pixel-border game-info">
+                <div class="info-card">
+                    <h3>SOBRE O JOGO</h3>
+                    <p>Baseado no conto "Pai contra Mãe" de Machado de Assis, este jogo leva você a vivenciar os dilemas morais de Cândido Neves, um caçador de escravos no Rio Imperial.</p>
                 </div>
 
-                <label>4. Quão clara e acessível foi a linguagem usada no roteiro?</label>
-                 <div class="rating-scale">
-                    <label class="inline-label">1 <input type="radio" name="nota_linguagem" value="1" required></label>
-                    <label class="inline-label">2 <input type="radio" name="nota_linguagem" value="2"></label>
-                    <label class="inline-label">3 <input type="radio" name="nota_linguagem" value="3"></label>
-                    <label class="inline-label">4 <input type="radio" name="nota_linguagem" value="4"></label>
-                    <label class="inline-label">5 <input type="radio" name="nota_linguagem" value="5"></label>
-                    <label class="inline-label">6 <input type="radio" name="nota_linguagem" value="6"></label>
-                    <label class="inline-label">7 <input type="radio" name="nota_linguagem" value="7"></label>
-                    <label class="inline-label">8 <input type="radio" name="nota_linguagem" value="8"></label>
-                    <label class="inline-label">9 <input type="radio" name="nota_linguagem" value="9"></label>
-                    <label class="inline-label">10 <input type="radio" name="nota_linguagem" value="10"></label>
+                <div class="info-card">
+                    <h3>OBJETIVO EDUCACIONAL</h3>
+                    <p>Desenvolvido para uso em sala de aula, o jogo estimula a reflexão sobre a escravidão, relações de poder e dilemas éticos na sociedade brasileira do século XIX.</p>
                 </div>
 
-                <label>5. Como você classificaria sua experiência geral com o jogo?</label>
-                 <div class="rating-scale">
-                    <label class="inline-label">1 <input type="radio" name="nota_experiencia" value="1" required></label>
-                    <label class="inline-label">2 <input type="radio" name="nota_experiencia" value="2"></label>
-                    <label class="inline-label">3 <input type="radio" name="nota_experiencia" value="3"></label>
-                    <label class="inline-label">4 <input type="radio" name="nota_experiencia" value="4"></label>
-                    <label class="inline-label">5 <input type="radio" name="nota_experiencia" value="5"></label>
-                    <label class="inline-label">6 <input type="radio" name="nota_experiencia" value="6"></label>
-                    <label class="inline-label">7 <input type="radio" name="nota_experiencia" value="7"></label>
-                    <label class="inline-label">8 <input type="radio" name="nota_experiencia" value="8"></label>
-                    <label class="inline-label">9 <input type="radio" name="nota_experiencia" value="9"></label>
-                    <label class="inline-label">10 <input type="radio" name="nota_experiencia" value="10"></label>
+                <div class="info-card">
+                    <h3>COMO JOGAR</h3>
+                    <p>Tomando decisões que afetam a narrativa, você experimentará diferentes perspectivas e consequências de suas escolhas, com múltiplos finais possíveis.</p>
                 </div>
-            </fieldset>
+            </section>
 
-            <fieldset>
-                <legend>Opiniões Críticas</legend>
+            <section class="pixel-border screenshots">
+                <h2>IMAGENS DO JOGO</h2>
 
-                <label for="ponto_forte">6. Qual foi o ponto mais forte do jogo para você? (Uma cena, diálogo, escolha, etc.)</label>
-                <textarea id="ponto_forte" name="ponto_forte" rows="4" placeholder="Descreva o que mais te impactou e o porquê..." required></textarea>
+                <div class="carousel" id="carousel">
+                    <div class="carousel-slide active">
+                        <img src="mata dia rework.png" alt="Cena do jogo - Mata dia">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="rua comercio alternativa.png" alt="Cena do jogo - Rua comércio">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="sala clara.png" alt="Cena do jogo - Sala clara">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="fundo cidade noite.png" alt="Cena do jogo - Cidade noite">
+                    </div>
 
-                <label for="ponto_fraco">7. Qual foi o ponto mais fraco ou que mais precisa de melhoria?</label>
-                <textarea id="ponto_fraco" name="ponto_fraco" rows="4" placeholder="O que você sugere para aprimorar o jogo?" required></textarea>
-
-                <label for="ferramenta_educacional">8. Você acredita que o jogo é uma ferramenta educacional eficaz? Por quê?</label>
-                <textarea id="ferramenta_educacional" name="ferramenta_educacional" rows="4" placeholder="Comente sobre o potencial de uso em sala de aula..." required></textarea>
-                
-                <label for="sucesso_adaptacao">9. A adaptação da obra de Machado de Assis foi bem-sucedida? A essência foi preservada?</label>
-                <textarea id="sucesso_adaptacao" name="sucesso_adaptacao" rows="4" placeholder="Sua opinião sobre a fidelidade à obra original..." required></textarea>
-
-                <label>10. Você já havia lido o conto original "Pai contra Mãe"?</label>
-                <div>
-                    <label class="inline-label">
-                        <input type="radio" name="leu_conto" value="Sim" required> Sim
-                    </label>
-                    <label class="inline-label">
-                        <input type="radio" name="leu_conto" value="Não"> Não
-                    </label>
+                    <div class="carousel-indicators" id="carousel-indicators" aria-hidden="false"></div>
                 </div>
-            </fieldset>
+            </section>
 
-            <button type="submit" id="submit-button">Enviar Pesquisa</button>
-        </form>
+            <div class="cta-buttons">
+                <a href="download.html" class="cta-button download">BAIXAR VERSÃO COMPLETA</a>
+                <a href="pesquisa.html" class="cta-button">PARTICIPAR DA PESQUISA</a>
+            </div>
+        </main>
+
+        <footer class="pixel-border">
+            <p>Jogo educativo desenvolvido para fins acadêmicos - Baseado no conto "Pai contra Mãe" de Machado de Assis</p>
+            <p>Todos os direitos reservados © 2025</p>
+        </footer>
     </div>
 
     <script>
-        const form = document.getElementById('quizForm');
-        const submitButton = document.getElementById('submit-button');
-        const formContainer = document.querySelector('.form-container');
+        (function(){
+            const intervalMs = 5000;
+            const carousel = document.getElementById('carousel');
+            if (!carousel) return;
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            
-            // !!! IMPORTANTE: Substitua pela URL da SUA implantação do Google Script !!!
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbygLZpB3DFLZsVylgcq37kVdNXj1dwlkdz5bn9Kw2hw283-cEWYHo48ybhFYdn9rcQ0/exec';
+            const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+            const indicatorsContainer = document.getElementById('carousel-indicators');
 
-            submitButton.disabled = true;
-            submitButton.textContent = 'Enviando...';
-            
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => {
-                    console.log('Success!', response);
-                    formContainer.innerHTML = `
-                        <div style="text-align: center; padding: 50px 0; color: #fff;">
-                            <h1 style="border-bottom: none;">Obrigado!</h1>
-                            <p style="font-size: 1.2em;">Sua opinião foi enviada com sucesso e irá contribuir muito para o projeto.</p>
-                        </div>
-                    `;
-                })
-                .catch(error => {
-                    console.error('Error!', error.message);
-                    alert('Houve um erro ao enviar sua pesquisa. Por favor, verifique sua conexão e tente novamente.');
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'Enviar Pesquisa';
+            let current = 0;
+            let timer = null;
+
+            // cria indicadores
+            slides.forEach((_, idx) => {
+                const btn = document.createElement('button');
+                if (idx === 0) btn.classList.add('active');
+                btn.setAttribute('aria-label', 'Ir para slide ' + (idx + 1));
+                btn.addEventListener('click', () => {
+                    goToSlide(idx);
+                    resetTimer();
                 });
-        });
-    </script>
+                indicatorsContainer.appendChild(btn);
+            });
 
+            const indicators = Array.from(indicatorsContainer.children);
+
+            function showSlide(index) {
+                slides.forEach((s, i) => {
+                    s.classList.toggle('active', i === index);
+                });
+                indicators.forEach((b, i) => b.classList.toggle('active', i === index));
+            }
+
+            function goToSlide(index) {
+                current = (index + slides.length) % slides.length;
+                showSlide(current);
+            }
+
+            function nextSlide() { goToSlide(current + 1); }
+
+            function resetTimer() {
+                if (timer) clearInterval(timer);
+                timer = setInterval(nextSlide, intervalMs);
+            }
+
+            showSlide(current);
+            resetTimer();
+
+            // pausa ao passar o mouse
+            carousel.addEventListener('mouseenter', () => { if (timer) clearInterval(timer); });
+            carousel.addEventListener('mouseleave', () => { resetTimer(); });
+
+            // pausa quando aba não visível
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    if (timer) clearInterval(timer);
+                } else { resetTimer(); }
+            });
+        })();
+    </script>
 </body>
 </html>
