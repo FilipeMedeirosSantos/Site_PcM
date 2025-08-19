@@ -21,99 +21,47 @@
             image-rendering: pixelated;
             min-height: 100vh;
         }
-
-        /* --- same container proportion as index.html --- */
-        .container {
-            width: 100%;
-            max-width: 1200px; /* igual ao index.html */
-            margin: 0 auto;
-            position: relative;
-        }
-
-        /* Pixel border effect (shared) */
-        .pixel-border {
-            position: relative;
-            border: 4px solid #FFFFFF;
-            box-shadow: 0 0 0 4px #000000;
-            background: rgba(0, 100, 0, 0.8);
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            background: #004d00;
-            margin-bottom: 20px;
-        }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; position: relative; }
+        .pixel-border { position: relative; border: 4px solid #FFFFFF; box-shadow: 0 0 0 4px #000000; background: rgba(0, 100, 0, 0.8); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #004d00; margin-bottom: 20px; }
         header h1 { font-size: 1.5em; text-shadow: 3px 3px 0 #000; letter-spacing: 1px; }
         nav ul { list-style: none; display:flex; gap:20px; }
         nav a { color:#FFFFFF; text-decoration:none; font-size:0.9em; padding:8px; transition:all .2s; text-shadow:1px 1px 0 #000; }
         nav a:hover, nav a.active { color:#FFFF00; transform: translateY(-2px); }
-        nav a:after { content:""; position:absolute; bottom:0; left:0; width:0; height:2px; background:#FFFF00; transition:width .3s; }
-
-        /* Content box standardized to match index */
-        .content-box {
-            width: 100%;
-            padding: 30px;
-            margin-bottom: 30px;
-            position: relative;
-        }
-        .content-box h2 {
-            text-align: center;
-            font-size: 1.8em;
-            text-shadow: 3px 3px 0 #000;
-            padding-bottom: 16px;
-            margin-bottom: 24px;
-            border-bottom: 4px solid #FFFFFF;
-            color: #FFFF00;
-        }
-
-        /* Form styles (kept your structure, but tuned sizes) */
+        .content-box { width: 100%; padding: 30px; margin-bottom: 30px; position: relative; }
+        .content-box h2 { text-align: center; font-size: 1.8em; text-shadow: 3px 3px 0 #000; padding-bottom: 16px; margin-bottom: 24px; border-bottom: 4px solid #FFFFFF; color: #FFFF00; }
         fieldset { border: none; margin-top: 30px; position: relative; padding: 20px; background: rgba(0,77,0,0.5); }
         legend { font-size: 1.2em; background-color:#004d00; padding:10px 20px; border:4px solid #FFF; margin-bottom:20px; color:#FFFF00; text-shadow:2px 2px 0 #000; box-shadow:0 0 0 4px #000; }
         label { display:block; margin-top:20px; margin-bottom:10px; font-size:0.9em; line-height:1.5; text-shadow:1px 1px 0 #000; padding-left:25px; position:relative; }
         label:before { content: ">"; position:absolute; left:0; top:0; color:#FFFF00; }
-
         input[type="text"], input[type="number"], textarea, select {
-            width:100%;
-            padding:12px;
-            border:4px solid;
-            border-color:#000 #fff #fff #000;
-            background-color:#004d00;
-            color:#FFF;
-            font-family:'Press Start 2P', cursive;
-            font-size:0.9em;
-            margin-top:5px;
-            display:block;
+            width:100%; padding:12px; border:4px solid; border-color:#000 #fff #fff #000; background-color:#004d00; color:#FFF;
+            font-family:'Press Start 2P', cursive; font-size:0.9em; margin-top:5px; display:block;
         }
         input:focus, textarea:focus, select:focus { outline: 4px dashed #FFFF00; outline-offset:2px; }
-
-        .rating-scale {
-            display:flex; justify-content:center; flex-wrap:wrap; gap:8px; padding:10px;
-            background-color: rgba(0,0,0,0.3); margin-top:10px; border:2px solid #FFF;
-        }
+        .rating-scale { display:flex; justify-content:center; flex-wrap:wrap; gap:8px; padding:10px; background-color: rgba(0,0,0,0.3); margin-top:10px; border:2px solid #FFF; }
         .inline-label { display:inline-flex; align-items:center; cursor:pointer; transition:transform .1s; }
         .inline-label:hover { transform:scale(1.05); }
         .inline-label input[type="radio"] { display:none; }
-        .inline-label span {
-            background:#004d00; padding:10px 15px; border:2px solid #fff; text-shadow:1px 1px 0 #000; box-shadow:2px 2px 0 #000;
-        }
-        .inline-label input[type="radio"]:checked + span {
-            background:#000; color:#FFFF00; border-color:#FFFF00; transform:scale(1.1); box-shadow:0 0 10px #FFFF00, 2px 2px 0 #000;
-        }
-
+        .inline-label span { background:#004d00; padding:10px 15px; border:2px solid #fff; text-shadow:1px 1px 0 #000; box-shadow:2px 2px 0 #000; }
+        .inline-label input[type="radio"]:checked + span { background:#000; color:#FFFF00; border-color:#FFFF00; transform:scale(1.1); box-shadow:0 0 10px #FFFF00, 2px 2px 0 #000; }
         .submit-container { margin-top:40px; text-align:center; }
         button[type="submit"] {
             display:inline-block; padding:16px 40px; background:#8B0000; color:#FFF; border:4px solid; border-color:#fff #000 #000 #fff;
             font-family:'Press Start 2P', cursive; font-size:1.1em; cursor:pointer; text-shadow:2px 2px 0 #000; position:relative; overflow:hidden;
         }
         button[type="submit"]:hover { background:#A52A2A; color:#FFFF00; transform:translateY(-3px); }
-        button[type="submit"]:active { border-color:#000 #fff #fff #000; transform:translateY(1px); }
-
         footer { text-align:center; padding:20px; font-size:0.8em; color:#AAA; text-shadow:1px 1px 0 #000; margin-top:20px; }
-
-        /* Responsive */
+        .success-message { text-align:center; padding:30px; color:#FFFF00; }
+        .error-message { 
+            background: #0e13b6; 
+            color: #ffffff; 
+            padding: 15px; 
+            margin: 15px 0; 
+            border: 4px solid #1100ff;
+            text-shadow: 1px 1px 0 #000;
+            text-align: center;
+        }
         @media (max-width:768px) {
             header { flex-direction:column; gap:15px; }
             nav ul { flex-wrap:wrap; justify-content:center; }
@@ -132,10 +80,9 @@
             <h1>PAI CONTRA MÃE</h1>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="index.html">Início</a></li>
                     <li><a href="download.html">Download</a></li>
-                    <li><a href="pesquisa.html">Pesquisa</a></li>
-                    <li><a href="#">Sobre</a></li>
+                    <li><a href="pesquisa.html" class="active">Pesquisa</a></li>
                 </ul>
             </nav>
         </header>
@@ -144,8 +91,9 @@
             <section id="pesquisa">
                 <div class="content-box pixel-border" id="form-wrapper">
                     <h2>PESQUISA DE OPINIÃO</h2>
-                    <form id="quizForm" name="quizForm">
-                        <!-- Mantive sua estrutura de campo e labels -->
+                    <div id="error-container" style="display: none;" class="error-message"></div>
+                    
+                    <form id="quizForm" name="quizForm" autocomplete="off">
                         <fieldset>
                             <legend>DADOS GERAIS</legend>
                             <label for="nome">Seu nome (opcional):</label>
@@ -220,7 +168,7 @@
                         <fieldset>
                             <legend>TERMO DE CIÊNCIA</legend>
                             <label style="text-align: justify;">
-                                <input type="checkbox" name="termo_ciencia" required style="width: auto; display: inline-block; margin-right: 10px;">
+                                <input type="checkbox" name="termo_ciencia" id="termo_ciencia" value="Sim" required style="width: auto; display: inline-block; margin-right: 10px;">
                                 Declaro que estou ciente de que minhas respostas serão utilizadas para fins de estudo e pesquisa acadêmica, e que poderão ser divulgadas e utilizadas em produções científicas e acadêmicas relacionadas ao projeto. Todas as informações serão tratadas de forma anônima e confidencial, em conformidade com as normas éticas de pesquisa.
                             </label>
                         </fieldset>
@@ -240,40 +188,109 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Gera botões 1..10 nos rating-scales que têm data-name
+            // Cria botões 1..10 nas escalas
             const ratingScales = document.querySelectorAll('.rating-scale[data-name]');
             ratingScales.forEach(scale => {
                 const name = scale.dataset.name;
                 let html = '';
-                for (let i=1;i<=10;i++){
+                for (let i = 1; i <= 10; i++) {
                     html += `<label class="inline-label">
-                                <input type="radio" name="${name}" value="${i}" required>
-                                <span>${i}</span>
+                                 <input type="radio" name="${name}" value="${i}" required>
+                                 <span>${i}</span>
                              </label>`;
                 }
                 scale.innerHTML = html;
             });
 
-            // envio: mantenho o comportamento de exemplo (simulação)
             const form = document.getElementById('quizForm');
-            const submitButton = document.getElementById('submit-button');
-            const formWrapper = document.getElementById('form-wrapper');
-
-            form.addEventListener('submit', function(e){
+            const errorContainer = document.getElementById('error-container');
+            
+            form.addEventListener('submit', function(e) {
                 e.preventDefault();
+                
+                // Desabilitar o botão para evitar múltiplos envios
+                const submitButton = document.getElementById('submit-button');
                 submitButton.disabled = true;
-                submitButton.textContent = 'ENVIANDO...';
-
-                setTimeout(() => {
-                    formWrapper.innerHTML = `
-                        <div class="success-message">
-                            <h2>OBRIGADO!</h2>
-                            <p>Sua opinião foi enviada com sucesso e é muito valiosa para nós!</p>
-                            <div class="success-icon">🎮</div>
-                            <p><a href="index.html" style="color:#FFFF00; text-decoration:none;">← Voltar à página inicial</a></p>
-                        </div>`;
-                }, 1200);
+                submitButton.textContent = "ENVIANDO...";
+                
+                // Esconder mensagens de erro anteriores
+                errorContainer.style.display = 'none';
+                errorContainer.textContent = '';
+                
+                // Coletar todos os dados do formulário
+                const formData = new FormData(form);
+                const data = {};
+                
+                // Adicionar campos extras ao formData
+                data['Nome'] = document.getElementById('nome').value;
+                data['Escolaridade'] = document.getElementById('escolaridade').value;
+                data['Idade'] = document.getElementById('idade').value;
+                data['PontoForte'] = document.getElementById('ponto_forte').value;
+                data['PontoFraco'] = document.getElementById('ponto_fraco').value;
+                data['FerramentaEducacional'] = document.getElementById('ferramenta_educacional').value;
+                data['Comparacao'] = document.getElementById('comparacao').value;
+                data['termo_ciencia'] = document.getElementById('termo_ciencia').checked ? 'Sim' : 'Não';
+                
+                // Coletar notas de avaliação
+                const ratingFields = ['NotaTematica', 'NotaEngajamento', 'NotaDebate', 'NotaLinguagem', 'NotaExperiencia'];
+                ratingFields.forEach(field => {
+                    const selected = document.querySelector(`input[name="${field}"]:checked`);
+                    data[field] = selected ? selected.value : '';
+                });
+                
+                // Coletar leitura do conto
+                const leuConto = document.querySelector('input[name="LeuConto"]:checked');
+                data['LeuConto'] = leuConto ? leuConto.value : '';
+                
+                // URL do Web App do Google Apps Script
+                const scriptURL = "https://script.google.com/macros/s/AKfycbyr9LPJIS0WJVzgJ_DsywLxalAEQNNNep24UFF_6F2MZArKlNrfQIV_rDuRQxuS4X8cHQ/exec";
+                
+                // Usando um proxy CORS para contornar o problema
+                const corsProxy = "https://corsproxy.io/?";
+                const targetURL = encodeURIComponent(scriptURL);
+                
+                fetch(corsProxy + targetURL, {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: { 
+                        "Content-Type": "application/json" 
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Resposta de rede não foi OK');
+                    }
+                    return response.json();
+                })
+                .then(res => {
+                    if (res.result === "success") {
+                        document.getElementById('form-wrapper').innerHTML = `
+                            <div class="success-message">
+                                <h2>OBRIGADO!</h2>
+                                <p>Sua opinião foi registrada com sucesso.</p>
+                                <p><a href="index.html" style="color:#FFFF00; text-decoration:none;">← Voltar à página inicial</a></p>
+                            </div>`;
+                    } else {
+                        showError(res.message || "Ocorreu um erro ao salvar suas respostas. Por favor, tente novamente.");
+                        submitButton.disabled = false;
+                        submitButton.textContent = "ENVIAR RESPOSTAS";
+                    }
+                })
+                .catch(err => {
+                    console.error('Erro de fetch:', err);
+                    showError("Obrigado por participar, isso foi muito importante.");
+                    submitButton.disabled = false;
+                    submitButton.textContent = "ENVIAR RESPOSTAS";
+                });
             });
+            
+            function showError(message) {
+                errorContainer.textContent = message;
+                errorContainer.style.display = 'block';
+                
+                // Rolagem suave para a mensagem de erro
+                errorContainer.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     </script>
 </body>
