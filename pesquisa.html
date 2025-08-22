@@ -205,6 +205,31 @@
             const form = document.getElementById('quizForm');
             const errorContainer = document.getElementById('error-container');
             
+            // Função para limpar o formulário
+            function limparFormulario() {
+                // Limpar campos de texto
+                document.getElementById('nome').value = '';
+                document.getElementById('ponto_forte').value = '';
+                document.getElementById('ponto_fraco').value = '';
+                document.getElementById('ferramenta_educacional').value = '';
+                document.getElementById('comparacao').value = '';
+                
+                // Limpar selects (definir para opção padrão)
+                document.getElementById('escolaridade').selectedIndex = 0;
+                document.getElementById('idade').selectedIndex = 0;
+                
+                // Limpar radio buttons
+                document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                    radio.checked = false;
+                });
+                
+                // Limpar checkbox
+                document.getElementById('termo_ciencia').checked = false;
+                
+                // Remover classes de validação
+                form.classList.remove('was-validated');
+            }
+            
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
@@ -264,6 +289,9 @@
                 })
                 .then(res => {
                     if (res.result === "success") {
+                        // Limpar o formulário após envio bem-sucedido
+                        limparFormulario();
+                        
                         document.getElementById('form-wrapper').innerHTML = `
                             <div class="success-message">
                                 <h2>OBRIGADO!</h2>
@@ -295,4 +323,3 @@
     </script>
 </body>
 </html>
-
