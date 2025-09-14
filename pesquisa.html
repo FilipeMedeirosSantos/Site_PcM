@@ -10,67 +10,338 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-image: url('salamonica.png');
+            background-image: url('noiteato2.png');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center center;
             font-family: 'Press Start 2P', cursive;
             color: #FFFFFF;
-            padding: 20px;
+            padding: 10px;
             image-rendering: pixelated;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .container { width: 100%; max-width: 1200px; margin: 0 auto; position: relative; }
-        .pixel-border { position: relative; border: 4px solid #FFFFFF; box-shadow: 0 0 0 4px #000000; background: rgba(0, 100, 0, 0.8); }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #004d00; margin-bottom: 20px; }
-        header h1 { font-size: 1.5em; text-shadow: 3px 3px 0 #000; letter-spacing: 1px; }
-        nav ul { list-style: none; display:flex; gap:20px; }
-        nav a { color:#FFFFFF; text-decoration:none; font-size:0.9em; padding:8px; transition:all .2s; text-shadow:1px 1px 0 #000; }
-        nav a:hover, nav a.active { color:#FFFF00; transform: translateY(-2px); }
-        .content-box { width: 100%; padding: 30px; margin-bottom: 30px; position: relative; }
-        .content-box h2 { text-align: center; font-size: 1.8em; text-shadow: 3px 3px 0 #000; padding-bottom: 16px; margin-bottom: 24px; border-bottom: 4px solid #FFFFFF; color: #FFFF00; }
-        fieldset { border: none; margin-top: 30px; position: relative; padding: 20px; background: rgba(0,77,0,0.5); }
-        legend { font-size: 1.2em; background-color:#004d00; padding:10px 20px; border:4px solid #FFF; margin-bottom:20px; color:#FFFF00; text-shadow:2px 2px 0 #000; box-shadow:0 0 0 4px #000; }
-        label { display:block; margin-top:20px; margin-bottom:10px; font-size:0.9em; line-height:1.5; text-shadow:1px 1px 0 #000; padding-left:25px; position:relative; }
-        label:before { content: ">"; position:absolute; left:0; top:0; color:#FFFF00; }
+        .container { 
+            width: 100%; 
+            max-width: 1400px;
+            margin: 0 auto; 
+            position: relative; 
+        }
+        .pixel-border { 
+            position: relative; 
+            border: 4px solid #FFFFFF; 
+            box-shadow: 0 0 0 4px #000000; 
+            background: rgba(0, 100, 0, 0.8); 
+        }
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 30px;
+            background: #004d00; 
+            margin-bottom: 25px;
+        }
+        header h1 { 
+            font-size: 1.8em;
+            text-shadow: 3px 3px 0 #000; 
+            letter-spacing: 1px; 
+            white-space: nowrap;
+        }
+        nav ul { 
+            list-style: none; 
+            display:flex; 
+            gap:25px;
+            flex-wrap: wrap;
+        }
+        nav a { 
+            color:#FFFFFF; 
+            text-decoration:none; 
+            font-size:0.95em;
+            padding:10px 12px;
+            transition:all .2s; 
+            text-shadow:1px 1px 0 #000; 
+            position: relative;
+        }
+        nav a:hover, nav a.active { 
+            color:#FFFF00; 
+            transform: translateY(-2px); 
+        }
+        nav a:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFFF00;
+            transition: width 0.3s;
+        }
+        nav a:hover:after, nav a.active:after { 
+            width: 100%; 
+        }
+        .content-box { 
+            width: 100%; 
+            padding: 35px;
+            margin-bottom: 30px; 
+            position: relative; 
+        }
+        .content-box h2 { 
+            text-align: center; 
+            font-size: 2em;
+            text-shadow: 3px 3px 0 #000; 
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #FFFFFF; 
+            color: #FFFF00; 
+        }
+        fieldset { 
+            border: none; 
+            margin-top: 35px;
+            position: relative; 
+            padding: 25px;
+            background: rgba(0,77,0,0.6); 
+        }
+        legend { 
+            font-size: 1.4em;
+            background-color:#004d00; 
+            padding:12px 25px;
+            border:4px solid #FFF; 
+            margin-bottom:25px;
+            color:#FFFF00; 
+            text-shadow:2px 2px 0 #000; 
+            box-shadow:0 0 0 4px #000; 
+        }
+        label { 
+            display:block; 
+            margin-top:25px;
+            margin-bottom:15px;
+            font-size:0.95em;
+            line-height:1.6;
+            text-shadow:1px 1px 0 #000; 
+            padding-left:30px;
+            position:relative; 
+        }
+        label:before { 
+            content: ">"; 
+            position:absolute; 
+            left:0; 
+            top:0; 
+            color:#FFFF00; 
+            font-size: 1.2em;
+        }
         input[type="text"], input[type="number"], textarea, select {
-            width:100%; padding:12px; border:4px solid; border-color:#000 #fff #fff #000; background-color:#004d00; color:#FFF;
-            font-family:'Press Start 2P', cursive; font-size:0.9em; margin-top:5px; display:block;
+            width:100%; 
+            padding:15px;
+            border:4px solid; 
+            border-color:#000 #fff #fff #000; 
+            background-color:#004d00; 
+            color:#FFF;
+            font-family:'Press Start 2P', cursive; 
+            font-size:0.95em;
+            margin-top:8px;
+            display:block;
+            line-height: 1.6;
         }
-        input:focus, textarea:focus, select:focus { outline: 4px dashed #FFFF00; outline-offset:2px; }
-        .rating-scale { display:flex; justify-content:center; flex-wrap:wrap; gap:8px; padding:10px; background-color: rgba(0,0,0,0.3); margin-top:10px; border:2px solid #FFF; }
-        .inline-label { display:inline-flex; align-items:center; cursor:pointer; transition:transform .1s; }
-        .inline-label:hover { transform:scale(1.05); }
-        .inline-label input[type="radio"] { display:none; }
-        .inline-label span { background:#004d00; padding:10px 15px; border:2px solid #fff; text-shadow:1px 1px 0 #000; box-shadow:2px 2px 0 #000; }
-        .inline-label input[type="radio"]:checked + span { background:#000; color:#FFFF00; border-color:#FFFF00; transform:scale(1.1); box-shadow:0 0 10px #FFFF00, 2px 2px 0 #000; }
-        .submit-container { margin-top:40px; text-align:center; }
+        input:focus, textarea:focus, select:focus { 
+            outline: 4px dashed #FFFF00; 
+            outline-offset:2px; 
+        }
+        .rating-scale { 
+            display:flex; 
+            justify-content:center; 
+            flex-wrap:wrap; 
+            gap:12px;
+            padding:15px;
+            background-color: rgba(0,0,0,0.3); 
+            margin-top:15px;
+            border:2px solid #FFF; 
+        }
+        .inline-label { 
+            display:inline-flex; 
+            align-items:center; 
+            cursor:pointer; 
+            transition:transform .1s; 
+        }
+        .inline-label:hover { 
+            transform:scale(1.05); 
+        }
+        .inline-label input[type="radio"] { 
+            display:none; 
+        }
+        .inline-label span { 
+            background:#004d00; 
+            padding:12px 18px;
+            border:2px solid #fff; 
+            text-shadow:1px 1px 0 #000; 
+            box-shadow:2px 2px 0 #000; 
+            font-size: 0.95em;
+        }
+        .inline-label input[type="radio"]:checked + span { 
+            background:#000; 
+            color:#FFFF00; 
+            border-color:#FFFF00; 
+            transform:scale(1.1); 
+            box-shadow:0 0 10px #FFFF00, 2px 2px 0 #000; 
+        }
+        .submit-container { 
+            margin-top:50px;
+            text-align:center; 
+        }
         button[type="submit"] {
-            display:inline-block; padding:16px 40px; background:#8B0000; color:#FFF; border:4px solid; border-color:#fff #000 #000 #fff;
-            font-family:'Press Start 2P', cursive; font-size:1.1em; cursor:pointer; text-shadow:2px 2px 0 #000; position:relative; overflow:hidden;
+            display:inline-block; 
+            padding:18px 45px;
+            background:#8B0000; 
+            color:#FFF; 
+            border:4px solid; 
+            border-color:#fff #000 #000 #fff;
+            font-family:'Press Start 2P', cursive; 
+            font-size:1.2em;
+            cursor:pointer; 
+            text-shadow:2px 2px 0 #000; 
+            position:relative; 
+            overflow:hidden;
+            transition: all 0.2s;
         }
-        button[type="submit"]:hover { background:#A52A2A; color:#FFFF00; transform:translateY(-3px); }
-        footer { text-align:center; padding:20px; font-size:0.8em; color:#AAA; text-shadow:1px 1px 0 #000; margin-top:20px; }
-        .success-message { text-align:center; padding:30px; color:#FFFF00; }
+        button[type="submit"]:hover { 
+            background:#A52A2A; 
+            color:#FFFF00; 
+            transform:translateY(-3px); 
+        }
+        footer { 
+            text-align:center; 
+            padding:25px;
+            font-size:0.85em;
+            color:#AAA; 
+            text-shadow:1px 1px 0 #000; 
+            margin-top:25px;
+            line-height: 1.6;
+        }
+        .success-message { 
+            text-align:center; 
+            padding:40px;
+            color:#FFFF00; 
+            font-size: 1.1em;
+            line-height: 1.8;
+            display: none;
+        }
         .error-message { 
             background: #0e13b6; 
             color: #ffffff; 
-            padding: 15px; 
-            margin: 15px 0; 
+            padding: 20px;
+            margin: 20px 0;
             border: 4px solid #1100ff;
             text-shadow: 1px 1px 0 #000;
             text-align: center;
+            font-size: 0.95em;
+            line-height: 1.6;
+            display: none;
         }
-        @media (max-width:768px) {
-            header { flex-direction:column; gap:15px; }
-            nav ul { flex-wrap:wrap; justify-content:center; }
-            .content-box { padding:15px; }
-            .content-box h2 { font-size:1.4em; }
-            legend { font-size:1em; padding:8px 15px; }
-            label { font-size:0.8em; }
-            .inline-label span { padding:8px 12px; }
-            .rating-scale { gap:6px; }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 95%;
+            }
+            
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            nav ul {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            
+            .container {
+                max-width: 100%;
+            }
+            
+            header {
+                padding: 15px;
+            }
+            
+            nav ul {
+                gap: 10px;
+            }
+            
+            nav a {
+                font-size: 0.8em;
+                padding: 8px;
+            }
+            
+            .content-box {
+                padding: 20px;
+            }
+            
+            .content-box h2 {
+                font-size: 1.5em;
+            }
+            
+            legend {
+                font-size: 1.1em;
+                padding: 10px 20px;
+            }
+            
+            label {
+                font-size: 0.85em;
+                padding-left: 25px;
+            }
+            
+            .inline-label span {
+                padding: 10px 15px;
+                font-size: 0.85em;
+            }
+            
+            .rating-scale {
+                gap: 8px;
+            }
+            
+            input[type="text"], input[type="number"], textarea, select {
+                padding: 12px;
+                font-size: 0.85em;
+            }
+            
+            button[type="submit"] {
+                padding: 15px 30px;
+                font-size: 1em;
+            }
+            
+            footer {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.4em;
+            }
+            
+            .content-box h2 {
+                font-size: 1.3em;
+            }
+            
+            legend {
+                font-size: 1em;
+            }
+            
+            label {
+                font-size: 0.8em;
+            }
+            
+            .inline-label span {
+                padding: 8px 12px;
+                font-size: 0.8em;
+            }
         }
     </style>
 </head>
@@ -83,6 +354,8 @@
                     <li><a href="index.html">Início</a></li>
                     <li><a href="download.html">Download</a></li>
                     <li><a href="pesquisa.html" class="active">Pesquisa</a></li>
+                    <li><a href="material.html">Material</a></li>
+                    <li><a href="tutoriais.html">Tutoriais</a></li>
                 </ul>
             </nav>
         </header>
@@ -91,7 +364,12 @@
             <section id="pesquisa">
                 <div class="content-box pixel-border" id="form-wrapper">
                     <h2>PESQUISA DE OPINIÃO</h2>
-                    <div id="error-container" style="display: none;" class="error-message"></div>
+                    <div id="error-container" class="error-message"></div>
+                    <div id="success-message" class="success-message" aria-live="polite">
+                        <h2>OBRIGADO!</h2>
+                        <p>Sua opinião foi registrada com sucesso.</p>
+                        <p><a href="index.html" style="color:#FFFF00; text-decoration:none;">← Voltar à página inicial</a></p>
+                    </div>
                     
                     <form id="quizForm" name="quizForm" autocomplete="off">
                         <fieldset>
@@ -204,32 +482,28 @@
 
             const form = document.getElementById('quizForm');
             const errorContainer = document.getElementById('error-container');
-            
-            // Função para limpar o formulário
-            function limparFormulario() {
-                // Limpar campos de texto
-                document.getElementById('nome').value = '';
-                document.getElementById('ponto_forte').value = '';
-                document.getElementById('ponto_fraco').value = '';
-                document.getElementById('ferramenta_educacional').value = '';
-                document.getElementById('comparacao').value = '';
-                
-                // Limpar selects (definir para opção padrão)
-                document.getElementById('escolaridade').selectedIndex = 0;
-                document.getElementById('idade').selectedIndex = 0;
-                
-                // Limpar radio buttons
-                document.querySelectorAll('input[type="radio"]').forEach(radio => {
-                    radio.checked = false;
-                });
-                
-                // Limpar checkbox
-                document.getElementById('termo_ciencia').checked = false;
-                
-                // Remover classes de validação
-                form.classList.remove('was-validated');
+            const successMessage = document.getElementById('success-message');
+            const formWrapper = document.getElementById('form-wrapper');
+
+            function showThankYou(submitBtn) {
+                // mostra a mensagem de obrigado e esconde tudo mais
+                errorContainer.style.display = 'none';
+                // esconde o formulário
+                if (form) form.style.display = 'none';
+                // opcional: esconde qualquer outro conteúdo dentro do wrapper, deixando só a mensagem
+                // aqui garantimos que successMessage fique visível
+                successMessage.style.display = 'block';
+
+                // desabilita o botão e altera texto para evitar interações
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = "ENVIADO";
+                }
+
+                // rolar até a mensagem de obrigado (bom para UX em telas pequenas)
+                successMessage.scrollIntoView({ behavior: 'smooth' });
             }
-            
+
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
@@ -237,16 +511,16 @@
                 const submitButton = document.getElementById('submit-button');
                 submitButton.disabled = true;
                 submitButton.textContent = "ENVIANDO...";
-                
-                // Esconder mensagens de erro anteriores
+
+                // Esconder mensagens anteriores
                 errorContainer.style.display = 'none';
+                successMessage.style.display = 'none';
                 errorContainer.textContent = '';
-                
+
                 // Coletar todos os dados do formulário
-                const formData = new FormData(form);
                 const data = {};
                 
-                // Adicionar campos extras ao formData
+                // Adicionar campos extras ao data
                 data['Nome'] = document.getElementById('nome').value;
                 data['Escolaridade'] = document.getElementById('escolaridade').value;
                 data['Idade'] = document.getElementById('idade').value;
@@ -266,14 +540,15 @@
                 // Coletar leitura do conto
                 const leuConto = document.querySelector('input[name="LeuConto"]:checked');
                 data['LeuConto'] = leuConto ? leuConto.value : '';
-                
-                // URL do Web App do Google Apps Script
+
+                // URL do Web App do Google Apps Script (mantive o seu)
                 const scriptURL = "https://script.google.com/macros/s/AKfycbyr9LPJIS0WJVzgJ_DsywLxalAEQNNNep24UFF_6F2MZArKlNrfQIV_rDuRQxuS4X8cHQ/exec";
                 
-                // Usando um proxy CORS para contornar o problema
+                // Usando um proxy CORS para contornar o problema, se necessário
                 const corsProxy = "https://corsproxy.io/?";
                 const targetURL = encodeURIComponent(scriptURL);
-                
+
+                // Faz o envio (se não quiser enviar, comente o fetch e chame showThankYou(submitButton) diretamente)
                 fetch(corsProxy + targetURL, {
                     method: "POST",
                     body: JSON.stringify(data),
@@ -282,43 +557,27 @@
                     }
                 })
                 .then(response => {
+                    // mesmo que a resposta não seja OK, vamos mostrar a mensagem de obrigado conforme pedido
+                    // (apenas logamos se houver problema)
                     if (!response.ok) {
-                        throw new Error('Resposta de rede não foi OK');
+                        console.warn('Resposta de rede não foi OK, status:', response.status);
                     }
-                    return response.json();
+                    // tentamos ler JSON, mas não é obrigatório para continuar
+                    return response.json().catch(() => ({}));
                 })
                 .then(res => {
-                    if (res.result === "success") {
-                        // Limpar o formulário após envio bem-sucedido
-                        limparFormulario();
-                        
-                        document.getElementById('form-wrapper').innerHTML = `
-                            <div class="success-message">
-                                <h2>OBRIGADO!</h2>
-                                <p>Sua opinião foi registrada com sucesso.</p>
-                                <p><a href="index.html" style="color:#FFFF00; text-decoration:none;">← Voltar à página inicial</a></p>
-                            </div>`;
-                    } else {
-                        showError(res.message || "Ocorreu um erro ao salvar suas respostas. Por favor, tente novamente.");
-                        submitButton.disabled = false;
-                        submitButton.textContent = "ENVIAR RESPOSTAS";
-                    }
+                    // independente do resultado, esconder tudo e mostrar a mensagem de obrigado
+                    showThankYou(submitButton);
+                    // opcional: limpar o formulário (não visível, mas deixamos limpo)
+                    try { form.reset(); } catch(e) {}
                 })
                 .catch(err => {
+                    // em caso de erro de fetch, também mostramos a mensagem de obrigado (conforme solicitado)
                     console.error('Erro de fetch:', err);
-                    showError("Obrigado por participar, isso foi muito importante.");
-                    submitButton.disabled = false;
-                    submitButton.textContent = "ENVIAR RESPOSTAS";
+                    showThankYou(submitButton);
+                    try { form.reset(); } catch(e) {}
                 });
             });
-            
-            function showError(message) {
-                errorContainer.textContent = message;
-                errorContainer.style.display = 'block';
-                
-                // Rolagem suave para a mensagem de erro
-                errorContainer.scrollIntoView({ behavior: 'smooth' });
-            }
         });
     </script>
 </body>
