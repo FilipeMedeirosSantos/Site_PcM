@@ -17,91 +17,353 @@
             background-position: center center;
             font-family: 'Press Start 2P', cursive;
             color: #FFF;
-            padding: 20px;
+            padding: 10px;
             image-rendering: pixelated;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .container { width:100%; max-width:1200px; margin:0 auto; position:relative; }
+        .container { 
+            width:100%; 
+            max-width:1400px; /* Aumentado de 1200px para 1400px */
+            margin:0 auto; 
+            position:relative; 
+        }
 
         .pixel-border {
             position: relative;
             border: 4px solid #FFFFFF;
             box-shadow: 0 0 0 4px #000000;
-            background: #006400;
+            background: rgba(0, 100, 0, 0.8);
         }
 
         header {
-            display:flex; justify-content:space-between; align-items:center;
-            padding:16px 24px; background:#004d00; margin-bottom:20px;
+            display:flex; 
+            justify-content:space-between; 
+            align-items:center;
+            padding:20px 30px; 
+            background:#004d00; 
+            margin-bottom:25px;
         }
         header h1 {
-            font-size: 1.5em;
+            font-size: 1.8em; /* Aumentado o tamanho */
             text-shadow: 3px 3px 0 #000;
             letter-spacing: 1px;
             color: #fff;
+            white-space: nowrap;
         }
-        nav ul { list-style:none; display:flex; gap:20px; }
-        nav a { color:#FFF; text-decoration:none; font-size:0.9em; padding:8px; text-shadow:1px 1px 0 #000; }
-        nav a:hover, nav a.active { color:#FFFF00; transform:translateY(-2px); }
+        nav ul { 
+            list-style:none; 
+            display:flex; 
+            gap:25px; /* Aumentado o gap */
+            flex-wrap: wrap;
+        }
+        nav a { 
+            color:#FFF; 
+            text-decoration:none; 
+            font-size:0.95em; /* Aumentado ligeiramente */
+            padding:10px 12px; /* Aumentado o padding */
+            text-shadow:1px 1px 0 #000; 
+            position: relative;
+            transition: all 0.2s;
+        }
+        nav a:hover, nav a.active { 
+            color:#FFFF00; 
+            transform:translateY(-2px); 
+        }
+        nav a:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFFF00;
+            transition: width 0.3s;
+        }
+        nav a:hover:after, nav a.active:after { 
+            width: 100%; 
+        }
 
-        .content-box { width:100%; padding:30px; margin-bottom:30px; position:relative; }
-        .content-box h2 { text-align:center; font-size:1.5em; text-shadow:3px 3px 0 #000; padding-bottom:16px; margin-bottom:24px; border-bottom:4px solid #FFF; color:#FFFF00; }
+        .content-box { 
+            width:100%; 
+            padding:35px; /* Aumentado o padding */
+            margin-bottom:30px; 
+            position:relative; 
+        }
+        .content-box h2 { 
+            text-align:center; 
+            font-size:1.8em; /* Aumentado o tamanho */
+            text-shadow:3px 3px 0 #000; 
+            padding-bottom:20px; /* Aumentado o padding */
+            margin-bottom:30px; /* Aumentada a margem */
+            border-bottom:4px solid #FFF; 
+            color:#FFFF00; 
+        }
 
         .distro-list {
             display: flex;
             flex-direction: column;
-            gap: 18px;
-            margin-bottom: 10px;
+            gap: 25px; /* Aumentado o gap */
+            margin-bottom: 15px;
         }
 
         .download-item {
-            display:flex; flex-direction:column; padding:18px; margin-bottom:0;
-            background: rgba(0,77,0,0.55); border:4px solid #FFF;
-            gap:12px;
+            display:flex; 
+            flex-direction:column; 
+            padding:25px; /* Aumentado o padding */
+            margin-bottom:0;
+            background: rgba(0,77,0,0.7); 
+            border:4px solid #FFF;
+            gap:15px; /* Aumentado o gap */
             width:100%;
+            transition: transform 0.3s;
         }
-        .download-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:10px; flex-wrap:wrap;}
-        .download-header h3 { font-size:1.05em; text-shadow:2px 2px 0 #000; margin:0; }
+        .download-item:hover {
+            transform: scale(1.02);
+            background: rgba(0, 100, 0, 0.8);
+        }
+        .download-header { 
+            display:flex; 
+            justify-content:space-between; 
+            align-items:center; 
+            margin-bottom:10px; /* Aumentada a margem */
+            gap:15px; /* Aumentado o gap */
+            flex-wrap:wrap;
+        }
+        .download-header h3 { 
+            font-size:1.2em; /* Aumentado o tamanho */
+            text-shadow:2px 2px 0 #000; 
+            margin:0; 
+            color: #FFFF00;
+        }
 
-        .download-version { background:#8B0000; padding:6px 10px; font-size:0.8em; display:inline-block; }
+        .download-version { 
+            background:#8B0000; 
+            padding:8px 15px; /* Aumentado o padding */
+            font-size:0.9em; /* Aumentado ligeiramente */
+            display:inline-block; 
+            border: 2px solid #000;
+        }
 
         .download-info {
             display:grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
-            gap:10px;
-            margin-bottom:6px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Aumentado o minmax */
+            gap:15px; /* Aumentado o gap */
+            margin-bottom:10px; /* Aumentada a margem */
             font-size:0.95em;
+            line-height: 1.7; /* Aumentado o line-height */
+        }
+
+        .info-item { 
+            word-break: break-word; 
+            white-space: normal; 
+            color: #fff; 
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .info-item strong { 
+            color:#FFFF00; 
+            display:block; 
+            margin-bottom:8px; /* Aumentada a margem */
+            font-size: 1.05em;
+        }
+
+        .download-buttons { 
+            display:flex; 
+            gap:15px; /* Aumentado o gap */
+            flex-wrap:wrap; 
+            margin-top:15px; /* Aumentada a margem */
+        }
+        .download-button {
+            display:inline-block; 
+            padding:12px 20px; /* Aumentado o padding */
+            background:#8B0000; 
+            color:#FFF; 
+            text-decoration:none;
+            border:4px solid; 
+            border-color:#fff #000 #000 #fff; 
+            font-family:'Press Start 2P', cursive; 
+            font-size:0.9em; /* Aumentado ligeiramente */
+            cursor:pointer; 
+            text-shadow:1px 1px 0 #000;
+            transition: all 0.2s;
+        }
+        .download-button:hover { 
+            background:#A52A2A; 
+            transform:translateY(-3px); 
+            color: #FFFF00;
+        }
+
+        .small-note { 
+            font-size:0.85em; /* Aumentado ligeiramente */
+            color:#ddd; 
+            margin-top:15px; /* Aumentada a margem */
+            line-height:1.7; /* Aumentado o line-height */
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-left: 3px solid #FFFF00;
+        }
+
+        .requirements { 
+            padding:25px; /* Aumentado o padding */
+            background:rgba(0,77,0,0.7); 
+            border:4px solid #FFF; 
+            margin-top:25px; /* Aumentada a margem */
+            line-height:1.7; /* Aumentado o line-height */
+        }
+        .requirements h3 { 
+            margin-bottom:20px; /* Aumentada a margem */
+            color:#FFFF00; 
+            text-shadow:2px 2px 0 #000; 
+            font-size: 1.2em;
+        }
+        .requirements ul { 
+            list-style:none; 
+            font-size:0.95em; 
+            line-height:1.8; /* Aumentado o line-height */
+        }
+        .requirements li { 
+            margin-bottom:12px; /* Aumentada a margem */
+            position:relative; 
+            padding-left:25px; /* Aumentado o padding */
+        }
+        .requirements li:before { 
+            content: ">"; 
+            position:absolute; 
+            left:0; 
+            color:#FFFF00; 
+            font-weight: bold;
+        }
+
+        .support-contact { 
+            word-break: break-word; 
+            white-space: normal; 
+            line-height:1.7; /* Aumentado o line-height */
+            color:#fff; 
+        }
+
+        footer { 
+            text-align:center; 
+            padding:25px; /* Aumentado o padding */
+            font-size:0.85em; /* Aumentado ligeiramente */
+            color:#AAA; 
+            text-shadow:1px 1px 0 #000; 
+            margin-top:25px; /* Aumentada a margem */
             line-height: 1.6;
         }
 
-        .info-item { word-break: break-word; white-space: normal; color: #fff; }
-        .info-item strong { color:#FFFF00; display:block; margin-bottom:6px; }
-
-        .download-buttons { display:flex; gap:10px; flex-wrap:wrap; margin-top:auto; }
-        .download-button {
-            display:inline-block; padding:10px 16px; background:#8B0000; color:#FFF; text-decoration:none;
-            border:4px solid; border-color:#fff #000 #000 #fff; font-family:'Press Start 2P', cursive; font-size:0.85em; cursor:pointer; text-shadow:1px 1px 0 #000;
+        .footer-small {
+            font-size: 12px; /* ajuste como quiser */
         }
-        .download-button:hover { background:#A52A2A; transform:translateY(-3px); }
 
-        .small-note { font-size:0.78em; color:#ddd; margin-top:10px; line-height:1.6; }
 
-        .requirements { padding:20px; background:rgba(0,77,0,0.5); border:4px solid #FFF; margin-top:20px; line-height:1.6; }
-        .requirements h3 { margin-bottom:15px; color:#FFFF00; text-shadow:2px 2px 0 #000; }
-        .requirements ul { list-style:none; font-size:0.95em; line-height:1.8; }
-        .requirements li { margin-bottom:8px; position:relative; padding-left:20px; }
-        .requirements li:before { content: ">"; position:absolute; left:0; color:#FFFF00; }
-
-        .support-contact { word-break: break-word; white-space: normal; line-height:1.6; color:#fff; }
-
-        footer { text-align:center; padding:20px; font-size:0.8em; color:#AAA; text-shadow:1px 1px 0 #000; margin-top:20px; }
-
-        @media (max-width:768px) {
-            header { flex-direction:column; gap:15px; }
-            nav ul { flex-wrap:wrap; justify-content:center; }
-            .download-header { flex-direction:column; align-items:flex-start; gap:8px; }
-            .download-info { grid-template-columns:1fr; }
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 95%;
+            }
+            
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            nav ul {
+                justify-content: center;
+            }
+            
+            .download-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            
+            .container {
+                max-width: 100%;
+            }
+            
+            header {
+                padding: 15px;
+            }
+            
+            nav ul {
+                gap: 10px;
+            }
+            
+            nav a {
+                font-size: 0.8em;
+                padding: 8px;
+            }
+            
+            .content-box {
+                padding: 20px;
+            }
+            
+            .content-box h2 {
+                font-size: 1.4em;
+            }
+            
+            .download-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .download-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-item {
+                padding: 20px;
+            }
+            
+            .download-header h3 {
+                font-size: 1.1em;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+            }
+            
+            .download-button {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .requirements {
+                padding: 20px;
+            }
+            
+            footer {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.4em;
+            }
+            
+            .content-box h2 {
+                font-size: 1.2em;
+            }
+            
+            .download-header h3 {
+                font-size: 1em;
+            }
+            
+            .requirements h3 {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
@@ -130,25 +392,25 @@
                         <div class="download-item">
                             <div class="download-header">
                                 <h3>WINDOWS</h3>
-                                <span class="download-version">v1.3.0</span>
+                                <span class="download-version">v1.0.0</span>
                             </div>
 
                             <div class="download-info">
                                 <div class="info-item"><strong>Pacotes</strong> Distribuição (.zip)</div>
-                                <div class="info-item"><strong>Tamanho</strong> ~350MB (zip)</div>
+                                <div class="info-item"><strong>Tamanho</strong> ~300MB (zip)</div>
                                 <div class="info-item"><strong>Arquitetura</strong> 64-bit (x86_64)</div>
                                 <div class="info-item"><strong>Lançamento</strong> 15/08/2025</div>
                             </div>
 
-                            <p>Versão DEMO de distribuição em formato ZIP para Windows 10/11 (64-bit).</p>
+                            <p>Versão DEMO de distribuição em formato ZIP para Windows 10/11 (64-bit). Contém todos os arquivos necessários para executar o jogo sem necessidade de instalação.</p>
 
                             <div class="download-buttons">
                                 <a class="download-button" 
-                                   href="https://www.dropbox.com/scl/fi/batbas8g4da99hlbm4e00/paicontramae-1.3.0-win.zip?rlkey=svnedg8227h1zpiwvbhdxplpe&st=awzihcjg&dl=1" 
+                                   href="https://www.dropbox.com/scl/fi/r61a8m4gajtq7zims9owk/paicontramae-1.1.0-win.zip?rlkey=wqx74w6vrqt7z7eigu3gn0rku&st=l2retfz6&dl=1" 
                                    download>Baixar para Windows (.zip)</a>
                             </div>
 
-                            <div class="small-note">Recomendado: Windows 10/11 64-bit. Extraia o conteúdo do ZIP e execute o jogo.</div>
+                            <div class="small-note">Recomendado: Windows 10/11 64-bit. Extraia o conteúdo do ZIP e execute o arquivo "Pai Contra Mãe.exe".</div>
                         </div>
 
                         <!-- LINUX -->
@@ -157,7 +419,16 @@
                                 <h3>LINUX</h3>
                                 <span class="download-version">v1.0.0</span>
                             </div>
-                            <p>Versão Linux em breve.</p>
+                            
+                            <div class="download-info">
+                                <div class="info-item"><strong>Pacotes</strong> AppImage, Flatpak</div>
+                                <div class="info-item"><strong>Tamanho</strong> ~350MB</div>
+                                <div class="info-item"><strong>Arquitetura</strong> 64-bit (x86_64)</div>
+                                <div class="info-item"><strong>Lançamento</strong> Em breve</div>
+                            </div>
+                            
+                            <p>Versão Linux em desenvolvimento. Será disponibilizada em formatos AppImage e Flatpak para facilitar a instalação na maioria das distribuições.</p>
+                            
                             <div class="download-buttons">
                                 <a class="download-button" href="#" onclick="alert('Versão Linux em breve'); return false;">Baixar para Linux</a>
                             </div>
@@ -169,7 +440,16 @@
                                 <h3>ANDROID</h3>
                                 <span class="download-version">v1.0.0</span>
                             </div>
-                            <p>Versão Android em breve.</p>
+                            
+                            <div class="download-info">
+                                <div class="info-item"><strong>Pacote</strong> APK</div>
+                                <div class="info-item"><strong>Tamanho</strong> ~250MB</div>
+                                <div class="info-item"><strong>Versão Android</strong> 8.0+</div>
+                                <div class="info-item"><strong>Lançamento</strong> Em breve</div>
+                            </div>
+                            
+                            <p>Versão Android em desenvolvimento. Será disponibilizada como arquivo APK para instalação direta em dispositivos Android.</p>
+                            
                             <div class="download-buttons">
                                 <a class="download-button" href="#" onclick="alert('Versão Android em breve'); return false;">Baixar APK</a>
                             </div>
@@ -177,10 +457,9 @@
                     </div>
 
                     <!-- SUPORTE -->
-                    <div class="download-item" style="margin-top:6px;">
+                    <div class="download-item" style="margin-top:15px;">
                         <div class="download-header">
                             <h3>MATERIAIS & SUPORTE</h3>
-                            <h3>EM BREVE</h3>
                             <span class="download-version">v1.0.0</span>
                         </div>
 
@@ -189,16 +468,27 @@
                             <div class="info-item"><strong>Assets</strong> Texturas, sons (zip)</div>
                             <div class="info-item"><strong>Patch</strong> Correções e atualização</div>
                             <div class="info-item"><strong>Suporte</strong> <span class="support-contact">felipesantoaus@gmail.com</span></div>
-                            
+                        </div>
+                        
+                        <p>Materiais de apoio para educadores e recursos adicionais estarão disponíveis em breve.</p>
+                        
+                        <div class="download-buttons">
+                            <a class="download-button" href="https://www.dropbox.com/scl/fi/bu5utm68r9byry75a7cae/Guia-Pedag-gico-para-o-Jogo-_Pai-contra-M-e__-Ferramenta-de-Letramento-Antirracista.pdf?rlkey=y6pgco9tmt4ezdw3q7ky61oo2&st=riemc726&dl=1" target="_blank">
+    Guia do Professor
+</a>
+
+                            <a class="download-button" href="https://www.dropbox.com/scl/fi/asf68v4ecgvsn9o7ij757/assets.zip?rlkey=ombniuht6z2iwpwwydbl8p2fc&st=pdbn19x5&dl=1" target="_blank">
+    Recursos (Assets)
+</a>
                         </div>
                     </div>
 
                     <div class="requirements">
-                        <h3>REQUISITOS (POR PLATAFORMA)</h3>
+                        <h3>REQUISITOS DO SISTEMA</h3>
                         <ul>
-                            <li><strong>Windows:</strong> Windows 10 ou superior (64-bit), 4GB RAM, 500MB livre</li>
-                            <li><strong>Linux:</strong> Kernel recente, 4GB RAM, depende da distro</li>
-                            <li><strong>Android:</strong> Android 8.0+, 4GB RAM recomendado</li>
+                            <li><strong>Windows:</strong> Windows 10 ou superior (64-bit), 4GB RAM, 500MB de espaço livre em disco, Placa de vídeo compatível com OpenGL 2.1 ou superior</li>
+                            <li><strong>Linux:</strong> Kernel recente, 4GB RAM, 500MB de espaço livre, Bibliotecas GLibc 2.28+, OpenGL 2.1+</li>
+                            <li><strong>Android:</strong> Android 8.0 (Oreo) ou superior, 4GB RAM recomendado, 300MB de espaço livre</li>
                         </ul>
                     </div>
 
@@ -206,18 +496,12 @@
             </section>
         </main>
 
-        <footer class="pixel-border">
-            <p>Jogo educativo desenvolvido para fins acadêmicos - Baseado no conto "Pai contra Mãe" de Machado de Assis</p>
-            <p>Todos os direitos reservados © 2025</p>
-        </footer>
+        <section>
+            <footer class="pixel-border footer-small">
+                <p>Jogo educativo desenvolvido para fins acadêmicos - Baseado no conto "Pai contra Mãe" de Machado de Assis</p>
+                <p>Todos os direitos reservados © 2025</p>
+            </footer>
+        </section>
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
