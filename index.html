@@ -108,22 +108,18 @@
             text-align: justify;
             hyphens: auto; /* Melhora a quebra de palavras */
         }
-
-        /* BANNER grande (background) entre HERO e SOBRE */
-        .banner-bg {
-            width: 100%;
-            margin: 30px 0; /* Aumentada a margem */
-            aspect-ratio: 16 / 6;   /* proporção principal */
-            background-image: url('capamenu.png');
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
+        
+        /* Banner Section */
+        .banner-container {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        .banner-image {
+            max-width: 100%;
+            height: auto;
             border: 4px solid #FFFFFF;
             box-shadow: 0 0 0 4px #000000;
-            overflow: hidden;
-        }
-        @media (max-width: 768px) {
-            .banner-bg { aspect-ratio: 4 / 3; }
+            image-rendering: pixelated;
         }
 
         /* Game Info */
@@ -418,10 +414,10 @@
                 </div>
             </section>
 
-            <section class="banner-bg pixel-border">
-              <img src="capamenu.png" alt="Banner principal">
+            <section class="banner-container">
+                <img src="Pcapamenu.png" alt="Banner do Jogo Pai Contra Mãe" class="banner-image">
             </section>
-
+            
             <section id="sobre" class="pixel-border game-info">
                 <div class="info-card">
                     <h3>SOBRE O JOGO</h3>
@@ -556,5 +552,3 @@
     </script>
 </body>
 </html>
-
-
