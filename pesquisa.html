@@ -343,6 +343,16 @@
                 font-size: 0.8em;
             }
         }
+        
+        .sub-question {
+            margin-left: 20px;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+        .sub-question label:before {
+            content: ">>";
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
@@ -409,7 +419,26 @@
                             <div class="rating-scale" data-name="NotaEngajamento"></div>
 
                             <label>3. Nota Debate: O quanto o jogo estimulou sua reflexão sobre os temas?</label>
-                            <div class="rating-scale" data-name="NotaDebate"></div>
+                            
+                            <div class="sub-question">
+                                <label>3.1. Fomento à Literatura: O quanto o jogo estimulou sua reflexão sobre este tema?</label>
+                                <div class="rating-scale" data-name="NotaFomentoLiteratura"></div>
+                            </div>
+                            
+                            <div class="sub-question">
+                                <label>3.2. Racismo: O quanto o jogo estimulou sua reflexão sobre este tema?</label>
+                                <div class="rating-scale" data-name="NotaRacismo"></div>
+                            </div>
+                            
+                            <div class="sub-question">
+                                <label>3.3. Escravidão: O quanto o jogo estimulou sua reflexão sobre este tema?</label>
+                                <div class="rating-scale" data-name="NotaEscravidao"></div>
+                            </div>
+                            
+                            <div class="sub-question">
+                                <label>3.4. Discussão de gênero: O quanto o jogo estimulou sua reflexão sobre este tema?</label>
+                                <div class="rating-scale" data-name="NotaGenero"></div>
+                            </div>
 
                             <label>4. Nota Linguagem: A linguagem visual e textual foi adequada?</label>
                             <div class="rating-scale" data-name="NotaLinguagem"></div>
@@ -531,7 +560,10 @@
                 data['termo_ciencia'] = document.getElementById('termo_ciencia').checked ? 'Sim' : 'Não';
                 
                 // Coletar notas de avaliação
-                const ratingFields = ['NotaTematica', 'NotaEngajamento', 'NotaDebate', 'NotaLinguagem', 'NotaExperiencia'];
+                const ratingFields = [
+                    'NotaTematica', 'NotaEngajamento', 'NotaLinguagem', 'NotaExperiencia',
+                    'NotaFomentoLiteratura', 'NotaRacismo', 'NotaEscravidao', 'NotaGenero'
+                ];
                 ratingFields.forEach(field => {
                     const selected = document.querySelector(`input[name="${field}"]:checked`);
                     data[field] = selected ? selected.value : '';
@@ -542,7 +574,7 @@
                 data['LeuConto'] = leuConto ? leuConto.value : '';
 
                 // URL do Web App do Google Apps Script (mantive o seu)
-                const scriptURL = "https://script.google.com/macros/s/AKfycbyr9LPJIS0WJVzgJ_DsywLxalAEQNNNep24UFF_6F2MZArKlNrfQIV_rDuRQxuS4X8cHQ/exec";
+                const scriptURL = "https://script.google.com/macros/s/AKfycby6O70bDY5XN9v2SJpTdqcrhktNAVu8h5HFn9LgJstbTD-rgb9aFpKxJKKMvrCXQfUfYg/exec";
                 
                 // Usando um proxy CORS para contornar o problema, se necessário
                 const corsProxy = "https://corsproxy.io/?";
